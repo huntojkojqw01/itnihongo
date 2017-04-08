@@ -1,38 +1,74 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-  
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name%>
+<div class="container">
+  <div class="row">
+    <div class="main-signup">
+      <div class="brand center-align">
+        <i class="fa fa-camera" aria-hidden="true" style="font-size: 50px"></i>
+        <h2>可愛いペット</h2>
+      </div>
+      <div class="col-sm-6">
+        <%= devise_error_messages! %>
+      </div>
+      <form action="<%= registration_path(resource_name)%>" class="form-signup" method="post">
+        <div class="form-group">
+          <label for="user_first_name" class="control-label col-sm-6">First Name</label>
+          <label for="user_last_name" class="control-label col-sm-6">Last Name</label>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-6">
+            <input type="text" class="form-control" name="user[first_name]" id="user_first_name">
+          </div>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" name="user[last_name]" id="user_last_name">
+          </div>
+        </div>
+        &nbsp
+        <div class="form-group">
+          <div class="col-sm-12">
+            <label for="user_email" class="control-label">Email</label>
+          </div>
+          <div class="col-sm-12">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+              <input class="form-control" autofocus="autofocus" type="email" value="" name="user[email]" id="user_email">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <label for="user_password" class="control-label">Password</label>
+            <em>(6 characters minimum)</em>
+          </div>
+          <div class="col-sm-12">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+              <input autocomplete="off" class="form-control" type="password" name="user[password]" id="user_password">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <label for="user_password_confirmation" class="control-label">Confirm Password</label>
+          </div>
+          <div class="col-sm-12">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+              <input autocomplete="off" class="form-control" type="password" name="user[password_confirmation]" id="user_password_confirmation">
+            </div>
+          </div>
+        </div>
+        <div class="form-group center-align">
+          <div class="col-sm-12">
+            <input type="submit" name="commit" class="form-control btn btn-default btn-signup" value="Signup">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-9 center-align">
+            <p>Already joined? <%= link_to "Log in", new_session_path(resource_name) %></p>
+          </div>
+        </div>
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      </form>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

@@ -1,25 +1,35 @@
-<h2>Change your password</h2>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
-
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
+<div class="container">
+  <div class="brand center-align">
+    <i class="fa fa-camera" aria-hidden="true" style="font-size: 50px"></i>
+    <h2>可愛いペット</h2>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  <div class="col-sm-6 center-block">
+    <%= devise_error_messages! %>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Change my password" %>
+  <div class="row">
+    <div class="col-sm-6 center-block">
+      <h3>Change your password</h3>
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+        <input name="utf8" type="hidden" value="✓">
+        <input type="hidden" name="_method" value="put">
+        <%= f.hidden_field :reset_password_token %>
+        <div class="form-group">
+          <label for="user_password">New password</label>
+          <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+          <% end %>
+          <input autofocus="autofocus" autocomplete="off" type="password" name="user[password]" id="user_password" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="user_password_confirmation">Confirm new password</label>
+          <input autocomplete="off" type="password" name="user[password_confirmation]" id="user_password_confirmation" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="submit" name="commit" value="Change my password" data-disable-with="Change my password" class="btn btn-default">
+          <p><%= link_to "Log in", new_session_path(resource_name) %> <%= link_to "Sign up", new_registration_path(resource_name) %></p>
+        </div>
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <% end %>
+      </div>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

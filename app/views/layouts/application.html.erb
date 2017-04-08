@@ -9,12 +9,39 @@
   </head>
 
   <body>
-    <%=render 'layouts/navbar' %>
-    
-
-  	<% flash.each do |alert,message| %>
-  		<div class="alert alert-<%= alert %>"><%= message %></div>
-  	<% end %>  	
-    <%= yield %>
+    <div class="header">
+      <div class="brand col-sm-2">
+        <a class="" href="#">可愛いペット</a>
+      </div>
+      <div class="search-box col-sm-4">
+        <div class="icon-addon">
+          <input type="text" placeholder="Search..." class="form-control search-input-box">
+          <span class="glyphicon glyphicon-search"></span>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <ul class="right-menu">
+          <li><a href="<%= root_path%>">Home</a></li>
+          <li><a href="">New</a></li>
+          <li><a href="<%= new_photo_path%>" class="btn btn-default btn-submit-photo">Submit a Photo</a></li>
+          <% if user_signed_in? %>
+            <a href=""><img src="" alt=""></a>
+            <a href="">Nguyen Dinh Manh(<%=link_to 'Log out',destroy_user_session_path,method: :delete %>)</a>
+          <% else %>
+            <li><a href="" class="btn btn-default btn-login">Login</a></li>
+            <li><a href="" class="btn btn-warning btn-signup">Signup</a></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <% flash.each do |alert,message| %>
+      <div class="alert alert-<%= alert %>
+            <%= alert=="alert"? "alert-danger":(
+      alert=="notice"? "alert-info": "") %>"><%= message %></div>
+    <% end %>
+    <div class="page-container">
+      <%= yield %>
+    </div>
   </body>
+
 </html>
