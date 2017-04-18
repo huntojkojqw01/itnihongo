@@ -26,7 +26,8 @@
           <li><a href="<%= new_photo_path%>" class="btn btn-default btn-submit-photo">Submit a Photo</a></li>
           <% if user_signed_in? %>
             <a href=""><img src="" alt=""></a>
-            <a href="">Nguyen Dinh Manh(<%=link_to 'Log out',destroy_user_session_path,method: :delete %>)</a>
+            <strong><%=current_user.first_name||='No name'%></strong>
+            <%=link_to 'Profile', edit_user_registration_path(current_user) %><%=link_to 'Log out',destroy_user_session_path,method: :delete %></a>
           <% else %>
             <li><a href="" class="btn btn-default btn-login">Login</a></li>
             <li><a href="" class="btn btn-warning btn-signup">Signup</a></li>
