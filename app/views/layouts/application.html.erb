@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DemoCarrier</title>
+    <title>可愛いペット</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -25,9 +25,9 @@
           <li><a href="">New</a></li>
           <li><a href="<%= new_photo_path%>" class="btn btn-default btn-submit-photo">Submit a Photo</a></li>
           <% if user_signed_in? %>
-            <a href=""><img src="" alt=""></a>
+            <a href=""><img src="<%=current_user.avatar%>" alt="" height="42" width="42"></a>
             <strong><%=current_user.first_name||='No name'%></strong>
-            <%=link_to 'Profile', edit_user_registration_path(current_user) %><%=link_to 'Log out',destroy_user_session_path,method: :delete %></a>
+            <%=link_to 'Profile', current_user %><%=link_to 'Log out',destroy_user_session_path,method: :delete %></a>
           <% else %>
             <li><a href="" class="btn btn-default btn-login">Login</a></li>
             <li><a href="" class="btn btn-warning btn-signup">Signup</a></li>

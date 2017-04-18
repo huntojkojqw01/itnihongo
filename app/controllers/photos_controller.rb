@@ -14,7 +14,12 @@ class PhotosController < ApplicationController
 
   # GET /photos/new
   def new
-    @photo = Photo.new
+    @photo = Photo.new    
+    if params[:pet_id]
+      @albums=Pet.find(params[:pet_id]).albums
+    else
+      @albums=nil     
+    end
   end
 
   # GET /photos/1/edit
