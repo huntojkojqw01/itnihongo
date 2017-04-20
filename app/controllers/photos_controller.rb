@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index]
   # GET /photos
   # GET /photos.json
   def index
@@ -18,7 +18,11 @@ class PhotosController < ApplicationController
     if params[:pet_id]
       @albums=Pet.find(params[:pet_id]).albums
     else
-      @albums=nil     
+      if current_user.pets.count==1
+        @albums=Pet.find(current_user.pets.first.id).albums
+      else
+        @albums=nil    
+      end 
     end
   end
 

@@ -11,7 +11,7 @@
   <body>
     <div class="header">
       <div class="brand col-sm-2">
-        <a class="" href="#">可愛いペット</a>
+        <%=link_to ' 可愛いペット',root_path,class: 'glyphicon glyphicon-home'%>
       </div>
       <div class="search-box col-sm-4">
         <div class="icon-addon">
@@ -21,16 +21,21 @@
       </div>
       <div class="col-sm-6">
         <ul class="right-menu">
-          <li><a href="<%= root_path%>">Home</a></li>
-          <li><a href="">New</a></li>
-          <li><a href="<%= new_photo_path%>" class="btn btn-default btn-submit-photo">Submit a Photo</a></li>
+          <li><%=link_to 'Home',root_path %></li>          
+          <li><a href="<%= new_photo_path%>">New photo</a></li> 
           <% if user_signed_in? %>
             <a href=""><img src="<%=current_user.avatar%>" alt="" height="42" width="42"></a>
-            <strong><%=current_user.first_name||='No name'%></strong>
-            <%=link_to 'Profile', current_user %><%=link_to 'Log out',destroy_user_session_path,method: :delete %></a>
+            <li class="dropdown">
+              <span class="dropdown-toggle" type="button" data-toggle="dropdown"><strong><%=current_user.first_name+' '+current_user.last_name||='No name'%></strong>
+              <span class="caret"></span></span>
+              <ul class="dropdown-menu">
+                <li><%=link_to 'Profile', current_user %></li>
+                <li><%=link_to 'Log out',destroy_user_session_path,method: :delete %></li>   
+              </ul>
+            </li>
           <% else %>
-            <li><a href="" class="btn btn-default btn-login">Login</a></li>
-            <li><a href="" class="btn btn-warning btn-signup">Signup</a></li>
+            <li><a href="<%=user_session_path%>" class="btn btn-default btn-login">Login</a></li>
+            <li><a href="<%=new_user_registration_path%>" class="btn btn-warning btn-signup">Signup</a></li>
           <% end %>
         </ul>
       </div>

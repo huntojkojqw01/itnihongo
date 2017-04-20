@@ -2,7 +2,7 @@
   <div class="row center-align">
     <h1><b>可愛いペット</b></h1>
     <h3>Everyone can upload pet's photo </h3>
-    <a href="">Submit a photo</a>
+    <a href="<%=new_photo_path%>">Submit a photo</a>
   </div>
   &nbsp;
   <ul class="main-photos">
@@ -13,11 +13,11 @@
             <div class="image-info">
               <div class="like-box self-hover">
                 <i class="fa fa-heart" aria-hidden="true"></i>
-                122
+                <%=photo.likes.count%>
               </div>
               <div class="comment-box self-hover">
                 <i class="fa fa-comments-o" aria-hidden="true"></i>
-                123
+                <%=photo.comments.count%>
               </div>
               <div class="user-box self-hover">
                 <a href=""><img src="<%= photo.image %>" alt=""></a>
