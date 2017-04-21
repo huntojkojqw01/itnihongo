@@ -4,6 +4,6 @@
 <% else %>
 	Pet
 	<%= select_tag :pet,options_from_collection_for_select(current_user.pets,:id,:name)%>
-	Chua co pet nao, <%=link_to 'new_pet',new_pet_path%>
+	<%=link_to 'new_pet',new_pet_path%>
 <% end %>
 <%= link_to 'Back', photos_path %>
