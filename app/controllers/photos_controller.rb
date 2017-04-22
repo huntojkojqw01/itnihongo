@@ -3,7 +3,7 @@ class PhotosController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   # GET /photos
   # GET /photos.json
-  def index
+  def index    
     @photos = Photo.all
   end
 

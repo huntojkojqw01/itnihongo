@@ -1,12 +1,42 @@
-<ul>
-      <li><%=link_to 'Home',root_path%></li>
-      <li><%=link_to 'New',new_photo_path%></li>
-      <li><%=link_to 'Submit a photo',"#"%></li>
-      <% if user_signed_in? %>
-
-        <li>Hello: <%=current_user.first_name||='No name'%>(<%=link_to 'Log out',destroy_user_session_path,method: :delete %>)</li>
-      <% else %>
-        <li><%=link_to 'Log in',new_user_session_path%></li>
-        <li><%=link_to 'Sign up',new_user_registration_path%></li>
-      <% end %>
-    </ul>
+  <% unless current_page?(new_user_registration_path)||current_page?(user_session_path)||current_page?(new_user_password_path)|| current_page?(edit_user_password_path) %>
+    <div class="header">
+      <div class="brand col-sm-2">
+        <%=link_to ' 可愛いペット',root_path,class: 'glyphicon glyphicon-home'%>
+      </div>
+      <div class="search-box col-sm-4">
+        <div class="icon-addon">
+          <input type="text" placeholder="<%=t('navbar.search')%>..." class="form-control search-input-box">
+          <span class="glyphicon glyphicon-search"></span>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <ul class="right-menu">
+          <li><%=link_to t('navbar.home'),root_path %></li>          
+          <li><a href="<%= new_photo_path%>"><%=t('navbar.new')%></a></li> 
+          <% if user_signed_in? %>
+            <a href=""><img src="<%=current_user.avatar%>" alt="" height="42" width="42"></a>
+            <li class="dropdown">
+              <span class="dropdown-toggle" type="button" data-toggle="dropdown"><strong><%=current_user.first_name+' '+current_user.last_name||='No name'%></strong>
+              <span class="caret"></span></span>
+              <ul class="dropdown-menu">
+                <li><%=link_to t('navbar.profile'), current_user %></li>
+                <li><%=link_to t('navbar.signout'),destroy_user_session_path,method: :delete %></li>   
+              </ul>
+            </li>
+          <% else %>
+            <li><a href="<%=user_session_path%>" class="btn btn-default btn-login"><%=t('navbar.signin')%></a></li>
+            <li><a href="<%=new_user_registration_path%>" class="btn btn-warning btn-signup"><%=t('navbar.signup')%></a></li>
+          <% end %>
+          <li id="language" class="dropdown">
+            <span class="dropdown-toggle" type="button" data-toggle="dropdown"><strong><%=t('navbar.language')%></strong>
+              <span class="caret"></span></span>
+              <ul class="dropdown-menu">
+                <li value="en"><a><%=t('navbar.en')%></a></li>
+                <li value="ja"><a><%=t('navbar.ja')%></a></li>
+                <li value="vi"><a><%=t('navbar.vi')%></a></li>   
+              </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  <% end %>
