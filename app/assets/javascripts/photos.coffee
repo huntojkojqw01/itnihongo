@@ -1,7 +1,20 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
-jQuery ->
-	$('#pet').change ->
-		alert($(this).val())
-		window.location="/photos/new?pet_id="+$(this).val()		
+$(document).on 'turbolinks:load', ->
+	$('#pet').change ->			
+		$.get
+			url: "/photos/new?pet_id="+$(this).val()
+			success: (data) ->
+				$("#photo_album_id").replaceWith $(data).find('#photo_album_id').clone()
+			dataType: "html"
+	$('#new_album').click ->
+		$('#new_album_modal input[name="petname"]').val($("#pet option:selected").text())
+		$('#new_album_modal #album_pet_id').val($("#pet").val())				
+		$('#new_album_modal').modal()	
+	$("#new_album_modal").on("ajax:success", (e, data, status, xhr) ->		
+	    $("#new_album_modal").modal('hide')	        
+	).on "ajax:error", (e, xhr, status, error) ->
+	    alert("fail")
+	$("#photo_image").change ->		
+		$('img').attr('src', window.URL.createObjectURL(this.files[0]))

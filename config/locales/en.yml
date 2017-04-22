@@ -20,7 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  hello: "Hello world"  
   navbar:
     home: "Home"
     new: "New photo"
@@ -43,3 +43,28 @@ en:
     signup: "Sign up"
     forgotpassword: "Forgot your password?"
     donthaveaccount: "Don't have account? "
+  pettouroku:
+    title: "Pet registration"
+    avatar: "Avatar"
+    select: "Choose file"
+    name: "Pet's name"
+    kind: "Category"
+    gender: "Gender"
+    male: "Male"
+    female: "Female"
+    birthday: "Birthday"
+    weight: "Weight"
+    description: "Description"
+    submit: "Create"
+  newphoto:
+    title: "New photo"
+    pet: "Pet"
+    album: "Album"
+    image: "Image"
+    select: "Choose file"
+    caption: "Caption"
+    submit: "Create"
+    newalbum: "Create new album"
+    petname: "Pet name"
+    albumname: "Album name"    
+    close: "Close"

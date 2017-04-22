@@ -16,12 +16,12 @@ class PhotosController < ApplicationController
   def new
     @photo = Photo.new    
     if params[:pet_id]
-      @albums=Pet.find(params[:pet_id]).albums
+      @albums=Pet.find(params[:pet_id]).albums      
     else
-      if current_user.pets.count==1
+      if current_user.pets.count>=1
         @albums=Pet.find(current_user.pets.first.id).albums
       else
-        @albums=nil    
+        @albums=[]    
       end 
     end
   end
