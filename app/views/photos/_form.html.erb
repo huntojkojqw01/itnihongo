@@ -9,24 +9,33 @@
       <% end %>
       </ul>
     </div>
-  <% end %>  
+  <% end %>
 
   <div class="field">
-    <%= f.label :album_id %>
+    <%= select_tag :pet,options_from_collection_for_select(current_user.pets,:id,:name)%>
+    <%=link_to '',new_pet_path,class: "btn btn-default glyphicon glyphicon-plus"%>
+  </div>
+
+  <div class="field">
+    <%= f.label t('newphoto.album') %>
     <%= f.collection_select :album_id,albums,:id,:name %>
+    <label id="new_album" class="btn btn-default glyphicon glyphicon-plus"></label>
+  </div>
+
+  <div class="field">    
+    <%= f.label t('newphoto.image') %>    
+    <%= image_tag(photo.image, size: "250x250")%>
+    <label for="photo_image" class="btn btn-default"><%=t('newphoto.select')%></label>
+    <%= f.file_field :image,style: "visibility:hidden"%>
   </div>
 
   <div class="field">
-    <%= f.label :image %>
-    <%= f.file_field :image %>
-  </div>
-
-  <div class="field">
-    <%= f.label :caption %>
+    <%= f.label t('newphoto.caption') %>
     <%= f.text_field :caption %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit t('newphoto.submit') %>
   </div>
 <% end %>
+<%=render 'new_album_modal'%>
