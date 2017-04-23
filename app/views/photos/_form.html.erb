@@ -10,18 +10,23 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= select_tag :pet,options_from_collection_for_select(current_user.pets,:id,:name)%>
-    <%=link_to '',new_pet_path,class: "btn btn-default glyphicon glyphicon-plus"%>
-  </div>
-
-  <div class="field">
-    <%= f.label t('newphoto.album') %>
-    <%= f.collection_select :album_id,albums,:id,:name %>
-    <label id="new_album" class="btn btn-default glyphicon glyphicon-plus"></label>
-  </div>
-
+  <% unless album %>
+    <div class="field">
+      <%= select_tag :pet,options_from_collection_for_select(current_user.pets,:id,:name)%>
+      <%=link_to '',new_pet_path,class: "btn btn-default glyphicon glyphicon-plus"%>
+    </div>  
+    <div class="field">
+      <%= f.label t('newphoto.album') %>
+      <%= f.collection_select :album_id,albums,:id,:name %>
+      <label id="new_album" class="btn btn-default glyphicon glyphicon-plus"></label>
+    </div>
+  <% else %>
+    <div class="field">
+      <%= f.label t('newphoto.album') %>
+      <%= album.name%>
+      <%= f.hidden_field :album_id,value: album.id%>      
+    </div>    
+  <% end %>
   <div class="field">    
     <%= f.label t('newphoto.image') %>    
     <%= image_tag(photo.image, size: "250x250")%>

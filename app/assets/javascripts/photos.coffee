@@ -18,3 +18,5 @@ $(document).on 'turbolinks:load', ->
 	    alert("fail")
 	$("#photo_image").change ->		
 		$('img').attr('src', window.URL.createObjectURL(this.files[0]))
+	$("img.main-img").click ->
+		window.location=$(this).attr("link")

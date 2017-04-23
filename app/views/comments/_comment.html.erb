@@ -1,0 +1,15 @@
+<div id='comment-<%=comment.id%>'>
+	<strong><%=comment.user_last_name%></strong>
+	<p class='comment-content' style='border: solid 1px green;'><%=comment.content%></p>
+	<% if comment.user==current_user %>
+		<div id='edit_delete_area' hidden='true'>
+			<%=link_to '',comment,method: :delete,data:{confirm: 'Are you sua?'},remote: true,class: 'btn btn-danger glyphicon glyphicon-remove'%>
+			<%=form_for comment,remote: true do |f| %>
+				<%=f.hidden_field :user_id%>
+				<%=f.hidden_field :photo_id%>
+				<%=f.text_area :content%><br>
+				<%=f.submit 'OK',class: 'btn btn-default'%>
+			<% end %>
+		</div>
+	<% end %>
+</div>

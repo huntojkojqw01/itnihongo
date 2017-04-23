@@ -11,5 +11,7 @@ Rails.application.routes.draw do
   resources :languages, only: :create
   resources :albums, only: [:create,:new,:show]
   resources :follows, only: [:create,:destroy]
+  resources :comments, only: [:create,:update,:destroy]
+  resources :likes, only: [:create,:destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

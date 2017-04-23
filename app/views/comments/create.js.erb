@@ -1,0 +1,4 @@
+$("#comment_content").val("");
+$("#comment_area").append("<%= j render @comment %>");
+var tmp=parseInt($("#comment_numbers").text())+1;
+$("#comment_numbers").text(tmp);
