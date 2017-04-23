@@ -43,7 +43,7 @@ en:
     signup: "Sign up"
     forgotpassword: "Forgot your password?"
     donthaveaccount: "Don't have account? "
-  pettouroku:
+  newpet:
     title: "Pet registration"
     avatar: "Avatar"
     select: "Choose file"
@@ -56,6 +56,11 @@ en:
     weight: "Weight"
     description: "Description"
     submit: "Create"
+  showpet:
+    title: "Pet's infomation"
+    submit: "Update"
+    follow: "Follow"
+    unfollow: "Unfollow"
   newphoto:
     title: "New photo"
     pet: "Pet"

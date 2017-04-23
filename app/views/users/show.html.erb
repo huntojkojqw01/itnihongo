@@ -8,7 +8,17 @@
 	<div class="col-md-6">
 		<%=@photos.count%> photos
 		<% @pets.each do |pet| %>
-			<%=link_to pet.name,pet%>
+			<%=link_to pet.name,pet,class: "btn btn-default"%>
+		<% end %>
+		<br>
+		<% @photos.each do |photo| %>
+			<div>
+				<%=link_to (image_tag photo.image,size: "100x100"),photo%>
+				Like: <%=photo.like_numbers%>
+				Comment: <%=photo.comment_numbers%>
+				User: <%=image_tag photo.owner_avatar,size: "50x50"%><%=photo.owner_last_name%>
+			</div>
+			
 		<% end %>
 	</div>
 	<div class="col-md-6">

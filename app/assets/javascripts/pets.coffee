@@ -3,4 +3,8 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).on 'turbolinks:load', ->
 	$("#pet_avatar").change ->		
-		$('img').attr('src', window.URL.createObjectURL(this.files[0]))
+		$(this).closest('div').find('label img').attr('src', window.URL.createObjectURL(this.files[0]))
+	
+	$("#view_photos,#view_albums").click ->		
+		$("#show_photos").toggle();
+		$("#show_albums").toggle();
