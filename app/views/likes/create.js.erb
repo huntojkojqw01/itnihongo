@@ -1,0 +1,3 @@
+var tmp=parseInt($("#like_numbers").text())+1;
+$("#like_numbers").text(tmp);
+$("#like").replaceWith("<%= j link_to '',@like,method: :delete,remote: true,class: 'glyphicon glyphicon-thumbs-down',id: 'dislike' %>");

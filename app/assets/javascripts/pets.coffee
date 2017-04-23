@@ -5,6 +5,13 @@ $(document).on 'turbolinks:load', ->
 	$("#pet_avatar").change ->		
 		$(this).closest('div').find('label img').attr('src', window.URL.createObjectURL(this.files[0]))
 	
-	$("#view_photos,#view_albums").click ->		
-		$("#show_photos").toggle();
-		$("#show_albums").toggle();
+	$("#view_photos").click ->	
+		$("#view_photos").attr("disabled",true);	
+		$("#show_photos").show();
+		$("#view_albums").attr("disabled",false);
+		$("#show_albums").hide();
+	$("#view_albums").click ->
+		$("#view_photos").attr("disabled",false);		
+		$("#show_photos").hide();
+		$("#view_albums").attr("disabled",true);
+		$("#show_albums").show();

@@ -10,19 +10,27 @@ class PhotosController < ApplicationController
   # GET /photos/1
   # GET /photos/1.json
   def show
+    @comments=@photo.comments
+    likes=Like.where("user_id = ? and photo_id = ?",current_user.id,@photo.id)    
+    @like=likes.first if likes.any?
+    @photos=@photo.album.pet.photos.order(created_at: :desc)
   end
 
   # GET /photos/new
   def new
-    @photo = Photo.new    
-    if params[:pet_id]
-      @albums=Pet.find(params[:pet_id]).albums      
-    else
-      if current_user.pets.count>=1
-        @albums=Pet.find(current_user.pets.first.id).albums
+    @photo = Photo.new
+    if params[:album_id]
+      @album=Album.find_by(id: params[:album_id])
+    else       
+      if params[:pet_id]
+        @albums=Pet.find_by(id: params[:pet_id]).albums      
       else
-        @albums=[]    
-      end 
+        if current_user.pets.count>=1
+          @albums=Pet.find_by(id: current_user.pets.first.id).albums
+        else
+          @albums=[]    
+        end 
+      end
     end
   end
 

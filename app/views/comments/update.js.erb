@@ -1,0 +1,9 @@
+$("#comment-<%=@comment.id%>").replaceWith("<%= j render @comment %>");
+$("p").click(function() {
+  var tmp;
+  tmp = $(this).closest('div').find('#edit_delete_area');
+  if (tmp.length > 0) {
+    tmp.show();
+    return $(this).hide();
+  }
+});
