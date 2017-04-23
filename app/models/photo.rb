@@ -4,4 +4,14 @@ class Photo < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :users, through: :likes
   has_many :comments, dependent: :destroy
+  delegate :name , :to => :album ,:prefix=>true
+  delegate :name , :to => "album.pet" ,:prefix=>"pet"
+  delegate :last_name , :to => "album.pet.user" ,:prefix=>"owner"
+  delegate :avatar, :to => "album.pet.user", :prefix=>"owner"
+  def comment_numbers
+  	comments.count
+  end
+  def like_numbers
+  	likes.count
+  end
 end

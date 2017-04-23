@@ -43,7 +43,7 @@ ja:
     signup: "サインアップ"
     forgotpassword: "パスワードをお忘れですか "
     donthaveaccount: "アカウントを持っていない "
-  pettouroku:
+  newpet:
     title: "ペットを登録"
     avatar: "アバター"
     select: "選択する"
@@ -56,6 +56,11 @@ ja:
     weight: "体重"
     description: "説明"
     submit: "作成"
+  showpet:
+    title: "ペット情報"
+    submit: "更新"
+    follow: "Follow"
+    unfollow: "Unfollow"
   newphoto:
     title: "New photo"
     pet: "Pet"

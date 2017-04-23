@@ -1,7 +1,9 @@
 class AlbumsController < ApplicationController
 	before_action :authenticate_user!
 	before_action :album_params, only: :create
-	
+	def new
+		@album=Album.new
+	end
 	def create
 		@album=Album.new(album_params)		
 		respond_to do |format|
@@ -14,7 +16,11 @@ class AlbumsController < ApplicationController
 	      end
 	    end	    
 	end
-
+	def show
+		@album=Album.find_by(id: params[:id])
+		redirect_to root_path unless @album
+		@photos=@album.photos
+	end
 	private
     def album_params
       params.require(:album).permit(:pet_id, :name)

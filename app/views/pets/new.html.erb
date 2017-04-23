@@ -1,4 +1,4 @@
-<%=t('pettouroku.title')%>
+<%=t('newpet.title')%>
 <%= form_for @pet do |f| %>	
   <div class="row">
     <div class="col-md-4">
@@ -6,45 +6,45 @@
         <%= f.hidden_field :user_id,value: current_user.id %>
       </div>
       <div class="field">
-        <%= f.label t('pettouroku.avatar') %>    
+        <%= f.label t('newpet.avatar') %>    
         <%= image_tag(@pet.avatar, size: "250x250")%>
-        <label for="pet_avatar" class="btn btn-default"><%=t('pettouroku.select')%></label>
+        <label for="pet_avatar" class="btn btn-default"><%=t('newpet.select')%></label>
         <%= f.file_field :avatar,style: "visibility:hidden"%>                
       </div>
     </div>
     <div class="col-md-6">
       <div class="field">
-        <%= f.label t('pettouroku.name') %><br />
+        <%= f.label t('newpet.name') %><br />
         <%= f.text_field :name, autocomplete: "off" %>
       </div>
 
       <div class="field">
-        <%= f.label t('pettouroku.kind') %><br />
+        <%= f.label t('newpet.kind') %><br />
         <%= f.collection_select :kind_id,Kind.all,:id,:name %>
       </div>
       
       <div class="field">
-        <%= f.label t('pettouroku.gender') %><br />
-        <%=t('pettouroku.male')%><%= f.radio_button :gender,1,checked: true %>
-        <%=t('pettouroku.female')%><%= f.radio_button :gender,0 %>
+        <%= f.label t('newpet.gender') %><br />
+        <%=t('newpet.male')%><%= f.radio_button :gender,1,checked: true %>
+        <%=t('newpet.female')%><%= f.radio_button :gender,0 %>
       </div>
       
       <div class="field">
-        <%= f.label t('pettouroku.birthday') %><br />
+        <%= f.label t('newpet.birthday') %><br />
         <%= f.date_select :birthday, start_year: 1917, end_year: 2002 %>
       </div>
       
       <div class="field">
-        <%= f.label t('pettouroku.weight') %><br />
+        <%= f.label t('newpet.weight') %><br />
         <%= f.number_field :weight%>
       </div>
 
       <div class="field">
-        <%= f.label t('pettouroku.description') %><br />
+        <%= f.label t('newpet.description') %><br />
         <%= f.text_area :description%>
       </div>
       <div class="actions">
-        <%= f.submit t('pettouroku.submit') %>
+        <%= f.submit t('newpet.submit') %>
       </div>
     </div>
   </div>  

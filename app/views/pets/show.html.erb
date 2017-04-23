@@ -1,2 +1,91 @@
-<%=image_tag @pet.avatar,size: "200x200"%>
-<%=@pet.name%>
+<div class="row">
+	<%=form_for @pet,remote: true do |f|%>
+	<div class="col-md-3 col-lg-3">
+		<label for="pet_avatar"><%=image_tag @pet.avatar,size: "200x200" if @pet.avatar%></label><br>
+		Pet name: <%=@pet.name%><br>
+		Follow: <%=@pet.follow_numbers%>
+		<%= f.file_field :avatar,style: "visibility:hidden"%>
+	</div>
+	<div class="col-md-6 col-lg-6">
+		<%=t('showpet.title')%><br>					
+	      <div class="field">    
+	        <%= f.hidden_field :user_id,value: current_user.id %>
+	      </div>	      
+	      <div class="field">
+	        <%= t('newpet.name') %>
+	        <%= f.text_field :name, autocomplete: "off" %>
+	      </div>
+	      <div class="field">
+	        <%= t('newpet.kind') %>
+	        <%= f.collection_select :kind_id,Kind.all,:id,:name %>
+	      </div>	      
+	      <div class="field">
+	        <%= t('newpet.gender') %>
+	        <%=t('newpet.male')%><%= f.radio_button :gender,1,checked: true %>
+	        <%=t('newpet.female')%><%= f.radio_button :gender,0 %>
+	      </div>	      
+	      <div class="field">
+	        <%= t('newpet.birthday') %>
+	        <%= f.date_select :birthday, start_year: 1917, end_year: 2002 %>
+	      </div>	      
+	      <div class="field">
+	        <%= t('newpet.weight') %>
+	        <%= f.number_field :weight%>
+	      </div>
+	      <div class="field">
+	        <%= t('newpet.description') %><br />
+	        <%= f.text_area :description%>
+	      </div>
+	      <div class="actions">
+	        <%= f.submit t('showpet.submit') %>
+	      </div>		
+		
+	</div>
+	<%end%>
+	<div class="col-md-3 col-lg-3">				
+		<% if current_user.is_owner? @pet %>
+			<%=link_to t('showpet.delete'),@pet,method: :delete,data: {confirm: "Are you sua?"},class: 'btn btn-danger'%>
+		<% else %>
+			<%=link_to t('showpet.follow'),follows_path(pet_id: @pet.id),method: :post,remote: true,id: "follow_button",class: 'btn btn-primary'%>
+			<%=link_to t('showpet.unfollow'),Follow.where(user_id: current_user.id,pet_id: @pet.id).first,method: :delete,data:{confirm: "Are you sua?"},remote: true,id: "unfollow_button",class: 'btn btn-warning'%>
+			<% if current_user.followed? @pet %>
+				<script type="text/javascript">
+					$("#follow_button").hide();
+				</script>
+			<% else %>
+				<script type="text/javascript">
+					$("#unfollow_button").hide();
+				</script>
+			<% end %>
+		<% end %>		
+	</div>
+</div>
+<div class="row">
+	<button id="view_photos">ペットの写真</button>
+	<button id="view_albums">アルバム</button>
+</div>
+<div class="row" id="content">
+	<div id="show_photos">
+		<% @photos.each do |photo| %>
+			<div class="col-md-3">
+				<%=link_to (image_tag photo.image,size: "200x200"),photo %>
+			</div>
+		<% end %>
+	</div>
+	<div id="show_albums" hidden="true">
+		<%=link_to '',new_album_path %>
+		<% @albums.each do |album| %>
+			<% if album.first_photo %>
+				<% pic=album.first_photo.image %>
+			<% else %>
+				<% pic="/uploads/default.jpeg" %>
+			<% end %>
+			<div class="col-md-3">
+				<%=link_to (image_tag pic,size: "200x200" ),album %><br>
+				Album name: <%=album.name%><br>
+				<%= album.photo_numbers%> photos
+			</div>
+		<% end %>
+	</div>
+</div>
+

@@ -43,7 +43,7 @@ vi:
     signup: "Đăng kí"
     forgotpassword: "Quên mật khẩu"
     donthaveaccount: "Chưa có tài khoản"
-  pettouroku:
+  newpet:
     title: "Đăng kí pet"
     avatar: "Ảnh đại diện"
     select: "Chọn ảnh"
@@ -56,6 +56,11 @@ vi:
     weight: "Cân nặng"
     description: "Mô tả"
     submit: "Tạo mới"
+  showpet:
+    title: "Thông tin thú nuôi"
+    submit: "Cập nhật"
+    follow: "Follow"
+    unfollow: "Unfollow"
   newphoto:
     title: "New photo"
     pet: "Pet"
