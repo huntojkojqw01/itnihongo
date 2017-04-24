@@ -5,9 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Kind.destroy_all
-Kind.create(name: "犬")
-Kind.create(name: "猫")
-Kind.create(name: "鳥")
-Kind.create(name: "蛇")
-Kind.create(name: "豚") 
+# Kind.destroy_all
+# Kind.create(name: "犬")
+# Kind.create(name: "猫")
+# Kind.create(name: "鳥")
+# Kind.create(name: "蛇")
+# Kind.create(name: "豚")
+User.all.each do |user|
+	if user.confirmation_token==nil
+		user.update(confirmed_at: Time.now)
+	end
+end
