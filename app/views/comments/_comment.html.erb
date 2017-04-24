@@ -2,7 +2,7 @@
 	<strong><%=comment.user_last_name%></strong>
 	<p class='comment-content' style='border: solid 1px green;'><%=comment.content%></p>
 	<% if comment.user==current_user %>
-		<div id='edit_delete_area' hidden='true'>
+		<div id='edit_delete_area' style="display: none">
 			<%=link_to '',comment,method: :delete,data:{confirm: 'Are you sua?'},remote: true,class: 'btn btn-danger glyphicon glyphicon-remove'%>
 			<%=form_for comment,remote: true do |f| %>
 				<%=f.hidden_field :user_id%>
@@ -13,3 +13,13 @@
 		</div>
 	<% end %>
 </div>
+<script type="text/javascript">	
+	$("#comment-<%=comment.id%> p.comment-content").click(function() {  
+	  var tmp;
+	  tmp = $(this).closest('div').find('#edit_delete_area');
+	  if (tmp.length > 0) {
+	    tmp.show();
+	    return $(this).hide();
+	  }
+	});
+</script>

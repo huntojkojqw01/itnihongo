@@ -1,3 +1,1 @@
-$("#follow_button").hide();
-$("#unfollow_button").attr("href","/follows/<%=@follow.id%>");
-$("#unfollow_button").show();
+$("#follow_button_<%=@follow.pet_id%>").replaceWith("<%= j render 'follows/unfollow_button', follow: @follow %>");

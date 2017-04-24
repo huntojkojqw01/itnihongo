@@ -4,7 +4,9 @@ class PhotosController < ApplicationController
   # GET /photos
   # GET /photos.json
   def index    
-    @photos = Photo.all
+    @photos = Photo.left_outer_joins(:likes,:comments).group(:id)
+    .select("photos.*","count(distinct likes.id) as like_num","count(distinct comments.id) as comment_num")
+    .order("like_num desc,comment_num desc")
   end
 
   # GET /photos/1
@@ -75,13 +77,14 @@ class PhotosController < ApplicationController
     respond_to do |format|
       format.html { redirect_to photos_url, notice: 'Photo was successfully destroyed.' }
       format.json { head :no_content }
+      format.js
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_photo
-      @photo = Photo.find(params[:id])
+      @photo = Photo.find_by(id: params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

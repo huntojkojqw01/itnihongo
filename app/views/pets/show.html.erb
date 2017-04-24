@@ -45,17 +45,11 @@
 	<div class="col-md-3 col-lg-3">				
 		<% if current_user.is_owner? @pet %>
 			<%=link_to t('showpet.delete'),@pet,method: :delete,data: {confirm: "Are you sua?"},class: 'btn btn-danger'%>
-		<% else %>
-			<%=link_to t('showpet.follow'),follows_path(pet_id: @pet.id),method: :post,remote: true,id: "follow_button",class: 'btn btn-primary'%>
-			<%=link_to t('showpet.unfollow'),Follow.where(user_id: current_user.id,pet_id: @pet.id).first,method: :delete,data:{confirm: "Are you sua?"},remote: true,id: "unfollow_button",class: 'btn btn-warning'%>
+		<% else %>			
 			<% if current_user.followed? @pet %>
-				<script type="text/javascript">
-					$("#follow_button").hide();
-				</script>
+				<%=render 'follows/unfollow_button', follow: Follow.where(user_id: current_user.id,pet_id: @pet.id).first %>
 			<% else %>
-				<script type="text/javascript">
-					$("#unfollow_button").hide();
-				</script>
+				<%=render 'follows/follow_button', pet_id: @pet.id %>
 			<% end %>
 		<% end %>		
 	</div>
