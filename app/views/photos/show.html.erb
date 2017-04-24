@@ -4,6 +4,7 @@
 		  <strong>Caption:</strong>
 		  <%= @photo.caption %><br>
 		  by <%=@photo.owner_last_name%>
+		  <%=link_to '',@photo,method: :delete,data:{confirm: "Are you sua?"},class: 'btn btn-danger glyphicon glyphicon-trash' if current_user==@photo.user%>
 		</p>
 		<p>
 		  <strong>Image:</strong>

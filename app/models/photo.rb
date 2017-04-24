@@ -7,8 +7,10 @@ class Photo < ApplicationRecord
   delegate :pet, :to => :album
   delegate :name , :to => :album ,:prefix=>true
   delegate :name , :to => "album.pet" ,:prefix=>"pet"
+  delegate :user , :to => "album.pet"
   delegate :last_name , :to => "album.pet.user" ,:prefix=>"owner"
   delegate :avatar, :to => "album.pet.user", :prefix=>"owner"
+  validates :image, presence: true
   def comment_numbers
   	comments.count
   end

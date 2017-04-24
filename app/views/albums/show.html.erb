@@ -1,4 +1,5 @@
 Album name: <%=@album.name%>
+Of pet name: <%=link_to @album.pet.name,@album.pet,class: 'btn btn-default' %>
 Photo: <%=@photos.count%>
 <div class="row">
 	<% if current_user==@album.user %>
