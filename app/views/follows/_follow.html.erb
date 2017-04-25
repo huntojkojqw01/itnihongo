@@ -6,11 +6,11 @@
 	<div id='follow-pet-avatar' class='col-md-3'>
 		<%=link_to (image_tag pet.avatar,size: "80x80"),pet %>
 	</div>
-	<div class='col-md-5'>
+	<div class='col-sm-5 col-md-5 col-lg-5'>
 		<%=pet.name%><br>
 		主人:<%=link_to "#{user.first_name} #{user.last_name}",user %>
 	</div>
-	<div class='col-md-2'>
+	<div class='col-sm-5 col-md-5 col-lg-5'>
 		<%=render 'follows/unfollow_button',follow: follow %>
 	</div>
 </div>

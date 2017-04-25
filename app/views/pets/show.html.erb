@@ -1,12 +1,12 @@
 <div class="row">
 	<%=form_for @pet,remote: true do |f|%>
-	<div class="col-md-3 col-lg-3">
+	<div class="col-sm-3 col-md-3 col-lg-3">
 		<label for="pet_avatar"><%=image_tag @pet.avatar,size: "200x200" if @pet.avatar%></label><br>
 		Pet name: <%=@pet.name%><br>
 		Follow: <%=@pet.follow_numbers%>
 		<%= f.file_field :avatar,style: "visibility:hidden"%>
 	</div>
-	<div class="col-md-6 col-lg-6">
+	<div class="col-sm-6 col-md-6 col-lg-6">
 		<%=t('showpet.title')%><br>					
 	      <div class="field">    
 	        <%= f.hidden_field :user_id,value: current_user.id %>
@@ -42,7 +42,7 @@
 		
 	</div>
 	<%end%>
-	<div class="col-md-3 col-lg-3">				
+	<div class="col-sm-3 col-md-3 col-lg-3">
 		<% if current_user.is_owner? @pet %>
 			<%=link_to t('showpet.delete'),@pet,method: :delete,data: {confirm: "Are you sua?"},class: 'btn btn-danger'%>
 		<% else %>			
@@ -61,7 +61,7 @@
 <div class="row" id="content">
 	<div id="show_photos">
 		<% @photos.each do |photo| %>
-			<div class="col-md-3">
+			<div class="col-sm-3 col-md-3 col-lg-3">
 				<%=link_to (image_tag photo.image,size: "200x200"),photo %>
 			</div>
 		<% end %>
@@ -74,7 +74,7 @@
 			<% else %>
 				<% pic="/uploads/default.jpeg" %>
 			<% end %>
-			<div class="col-md-3">
+			<div class="col-sm-3 col-md-3 col-lg-3">
 				<%=link_to (image_tag pic,size: "200x200" ),album %><br>
 				Album name: <%=album.name%><br>
 				<%= album.photo_numbers%> photos
