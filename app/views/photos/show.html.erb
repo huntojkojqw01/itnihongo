@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-md-8">
+	<div class="col-sm-8 col-md-8 col-lg-8">
 		<p>
 		  <strong>Caption:</strong>
 		  <%= @photo.caption %><br>
@@ -33,7 +33,7 @@
 			<%=render @comments%>			
 		</div>				
 	</div>
-	<div class="col-md-4">
+	<div class="col-sm-4 col-md-4 col-lg-4">
 		<%=link_to 'View album',@photo.album,class: "btn btn-default"%><br>
 		<% @photos.each do |photo| %>
 			<%=link_to (image_tag photo.image,size: "40x40"),photo %><%=photo.caption%><br>
