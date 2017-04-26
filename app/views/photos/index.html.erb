@@ -5,30 +5,5 @@
     <a href="<%=new_photo_path%>">Submit a photo</a>
   </div>
   &nbsp;
-  <ul class="main-photos">
-    <% @photos.each do |photo| %>
-        <li class="col-sm-4 col-md-4 col-lg-4">
-          <div class="image-box">
-            <img src="<%= photo.image %>" alt="Click here" class="main-img" link="<%=photo_path(photo)%>">            
-            <div class="image-info">
-              <div class="like-box self-hover">
-                <i class="fa fa-heart" aria-hidden="true"></i>
-                <%=photo.likes.count%>
-              </div>
-              <div class="comment-box self-hover">
-                <i class="fa fa-comments-o" aria-hidden="true"></i>
-                <%=photo.comments.count%>
-              </div>
-              <div class="user-box self-hover">
-                <a href=""><img src="<%= photo.image %>" alt=""></a>
-                <a href="" class="text-white"><%= photo.album.pet.user.first_name+' '+photo.album.pet.user.last_name%></a>
-              </div>
-              <div class="download-box self-hover">
-                <i class="fa fa-download" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div>
-        </li>
-    <% end %>
-  </ul>
+  <%= render 'all_photo', photo: @photo %>
 </div>
