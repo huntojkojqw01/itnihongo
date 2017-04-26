@@ -73,3 +73,9 @@ ja:
     petname: "Pet name"
     albumname: "Album name"    
     close: "Close"
+  photodetail:
+      view_album: "アルバムへ"
+      like_number: "いいね"
+      comment_number: "コメント"
+      comment_textarea: "あなたのコメント..."
+      comment_button: "コメント"

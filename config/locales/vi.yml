@@ -73,3 +73,9 @@ vi:
     petname: "Pet name"
     albumname: "Album name"    
     close: "Close"
+  photodetail:
+      view_album: "Đi tới album "
+      like_number: "Thích"
+      comment_number: "Bình luận"
+      comment_textarea: "Bình luận của bạn..."
+      comment_button: "Đăng bình luận"

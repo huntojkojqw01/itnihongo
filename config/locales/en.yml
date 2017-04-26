@@ -73,3 +73,9 @@ en:
     petname: "Pet name"
     albumname: "Album name"    
     close: "Close"
+  photodetail:
+    view_album: "Go to album "
+    like_number: "Likes"
+    comment_number: "Comments"
+    comment_textarea: "Your comment..."
+    comment_button: "Comment"

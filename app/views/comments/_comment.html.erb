@@ -1,9 +1,10 @@
 <div id='comment-<%=comment.id%>'>
-	<strong><%=comment.user_last_name%></strong>
+  <%=image_tag comment.user.avatar ,size: "50x50", class:"circle"%>
+	<strong><%= link_to comment.user_last_name, comment.user%></strong>
 	<p class='comment-content' style='border: solid 1px green;'><%=comment.content%></p>
 	<% if comment.user==current_user %>
 		<div id='edit_delete_area' style="display: none">
-			<%=link_to '',comment,method: :delete,data:{confirm: 'Are you sua?'},remote: true,class: 'btn btn-danger glyphicon glyphicon-remove'%>
+			<%=link_to '',comment,method: :delete,data:{confirm: 'Are you sure?'},remote: true,class: 'btn btn-danger glyphicon glyphicon-remove'%>
 			<%=form_for comment,remote: true do |f| %>
 				<%=f.hidden_field :user_id%>
 				<%=f.hidden_field :photo_id%>
