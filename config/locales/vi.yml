@@ -72,6 +72,7 @@ vi:
     newalbum: "Create new album"
     petname: "Pet name"
     albumname: "Album name"    
+<<<<<<< HEAD
     close: "Close"
   photodetail:
       view_album: "Đi tới album "
@@ -88,3 +89,6 @@ vi:
       image_text: "Ảnh"
       follow_pets: "Động vật đã theo dõi"
       create_pet: "Thêm mới động vật"
+=======
+    close: "Close"
+>>>>>>> parent of 6ab5280... view all album & show images in album
