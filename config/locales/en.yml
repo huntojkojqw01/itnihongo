@@ -83,3 +83,8 @@ en:
   comment:
     comment_delete_text: "Delete this comment"
     comment_edit_text: "Edit this comment"
+  user_page:
+    edit_profile: "Edit Profile"
+    image_text: "Photos"
+    follow_pets: "Followed Pets"
+    create_pet: "New Pet"
