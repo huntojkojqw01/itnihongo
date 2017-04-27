@@ -6,7 +6,6 @@ class AlbumsController < ApplicationController
 	end
 	def index
 		@list_album = Album.all
-		
 	end
 	def create
 		@album=Album.new(album_params)		
