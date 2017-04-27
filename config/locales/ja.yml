@@ -72,23 +72,23 @@ ja:
     newalbum: "Create new album"
     petname: "Pet name"
     albumname: "Album name"    
-<<<<<<< HEAD
     close: "Close"
   photodetail:
-      view_album: "アルバムへ"
-      like_number: "いいね"
-      comment_number: "コメント"
-      comment_textarea: "あなたのコメント..."
-      comment_button: "コメント"
-      delete_post_text: "削除する..."
+    view_album: "アルバムへ"
+    like_number: "いいね"
+    comment_number: "コメント"
+    comment_textarea: "あなたのコメント..."
+    comment_button: "コメント"
+    delete_post_text: "削除する..."
   comment:
-      comment_delete_text: "削除する..."
-      comment_edit_text: "編集する..."
+    comment_delete_text: "削除する..."
+    comment_edit_text: "編集する..."
   user_page:
-      edit_profile: "プロフィル編集"
-      image_text: "写真"
-      follow_pets: "フォローしたペット"
-      create_pet: "ペット登録"
-=======
-    close: "Close"
->>>>>>> parent of 6ab5280... view all album & show images in album
+    edit_profile: "プロフィル編集"
+    image_text: "写真"
+    follow_pets: "フォローしたペット"
+    create_pet: "ペット登録"
+  album:
+    title: "アルバム"
+    count_photos: "件"
+    empty: "ドラム"
