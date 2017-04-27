@@ -5,7 +5,7 @@
         <i class="fa fa-camera" aria-hidden="true" style="font-size: 50px"></i>
         <h2>可愛いペット</h2>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-6 col-md-6 col-lg-6">
         <%= devise_error_messages! %>
       </div>
       <form action="<%= registration_path(resource_name)%>" class="form-signup" method="post">
@@ -14,19 +14,19 @@
           <label for="user_last_name" class="control-label col-sm-6">Last Name</label>
         </div>
         <div class="form-group">
-          <div class="col-sm-6">
+          <div class="col-sm-6 col-md-6 col-lg-6">
             <input type="text" class="form-control" name="user[first_name]" id="user_first_name">
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-6 col-md-6 col-lg-6">
             <input type="text" class="form-control" name="user[last_name]" id="user_last_name">
           </div>
         </div>
         &nbsp
         <div class="form-group">
-          <div class="col-sm-12">
+          <div class="col-sm-12 col-md-12 col-lg-12">
             <label for="user_email" class="control-label">Email</label>
           </div>
-          <div class="col-sm-12">
+          <div class="col-sm-12 col-md-12 col-lg-12">
             <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
               <input class="form-control" autofocus="autofocus" type="email" value="" name="user[email]" id="user_email">
@@ -34,11 +34,11 @@
           </div>
         </div>
         <div class="form-group">
-          <div class="col-sm-12">
+          <div class="col-sm-12 col-md-12 col-lg-12">
             <label for="user_password" class="control-label">Password</label>
             <em>(6 characters minimum)</em>
           </div>
-          <div class="col-sm-12">
+          <div class="col-sm-12 col-md-12 col-lg-12">
             <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
               <input autocomplete="off" class="form-control" type="password" name="user[password]" id="user_password">
@@ -46,10 +46,10 @@
           </div>
         </div>
         <div class="form-group">
-          <div class="col-sm-12">
+          <div class="col-sm-12 col-md-12 col-lg-12">
             <label for="user_password_confirmation" class="control-label">Confirm Password</label>
           </div>
-          <div class="col-sm-12">
+          <div class="col-sm-12 col-md-12 col-lg-12">
             <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
               <input autocomplete="off" class="form-control" type="password" name="user[password_confirmation]" id="user_password_confirmation">
@@ -57,13 +57,13 @@
           </div>
         </div>
         <div class="form-group center-align">
-          <div class="col-sm-12">
+          <div class="col-sm-12 col-md-12 col-lg-12">
             <input type="submit" name="commit" class="form-control btn btn-default btn-signup" value="Signup">
           </div>
         </div>
         <div class="form-group">
-          <div class="col-sm-2"></div>
-          <div class="col-sm-9 center-align">
+          <div class="col-sm-2 col-md-2 col-lg-2"></div>
+          <div class="col-sm-9 col-md-9 col-lg-9 center-align">
             <p>Already joined? <%= link_to "Log in", new_session_path(resource_name) %></p>
           </div>
         </div>
