@@ -79,3 +79,7 @@ vi:
       comment_number: "Bình luận"
       comment_textarea: "Bình luận của bạn..."
       comment_button: "Đăng bình luận"
+      delete_post_text: "Xóa post này"
+  comment:
+        comment_delete_text: "Xóa comment"
+        comment_edit_text: "Chỉnh sửa comment"

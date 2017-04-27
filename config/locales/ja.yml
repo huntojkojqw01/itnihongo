@@ -79,3 +79,7 @@ ja:
       comment_number: "コメント"
       comment_textarea: "あなたのコメント..."
       comment_button: "コメント"
+      delete_post_text: "削除する..."
+  comment:
+      comment_delete_text: "削除する..."
+      comment_edit_text: "編集する..."

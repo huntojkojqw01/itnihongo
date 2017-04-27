@@ -79,3 +79,7 @@ en:
     comment_number: "Comments"
     comment_textarea: "Your comment..."
     comment_button: "Comment"
+    delete_post_text: "Delete this post"
+  comment:
+    comment_delete_text: "Delete this comment"
+    comment_edit_text: "Edit this comment"
