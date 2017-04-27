@@ -73,3 +73,7 @@ en:
     petname: "Pet name"
     albumname: "Album name"    
     close: "Close"
+  album:
+    title: "Album"
+    count_photos: " pictures"
+    empty: "Empty"

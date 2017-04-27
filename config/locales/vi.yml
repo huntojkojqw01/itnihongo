@@ -73,3 +73,7 @@ vi:
     petname: "Pet name"
     albumname: "Album name"    
     close: "Close"
+  album:
+    title: "Album"
+    count_photos: " ảnh"
+    empty: "Trống"

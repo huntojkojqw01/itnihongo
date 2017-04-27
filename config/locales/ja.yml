@@ -73,3 +73,7 @@ ja:
     petname: "Pet name"
     albumname: "Album name"    
     close: "Close"
+  album:
+        title: "アルバム"
+        count_photos: "件"
+        empty: "ドラム"
