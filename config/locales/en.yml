@@ -73,3 +73,18 @@ en:
     petname: "Pet name"
     albumname: "Album name"    
     close: "Close"
+  photodetail:
+    view_album: "Go to album "
+    like_number: "Likes"
+    comment_number: "Comments"
+    comment_textarea: "Your comment..."
+    comment_button: "Comment"
+    delete_post_text: "Delete this post"
+  comment:
+    comment_delete_text: "Delete this comment"
+    comment_edit_text: "Edit this comment"
+  user_page:
+    edit_profile: "Edit Profile"
+    image_text: "Photos"
+    follow_pets: "Followed Pets"
+    create_pet: "New Pet"
