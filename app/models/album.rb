@@ -7,5 +7,5 @@ class Album < ApplicationRecord
   end
   def photo_numbers
   	photos.count
-  end
+  end  
 end

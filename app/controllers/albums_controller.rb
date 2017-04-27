@@ -3,11 +3,6 @@ class AlbumsController < ApplicationController
 	before_action :album_params, only: :create
 	def new
 		@album=Album.new
-
-	end
-	def index
-		@list_album = Album.all
-		
 	end
 	def create
 		@album=Album.new(album_params)		
