@@ -1,3 +1,42 @@
 // Place all the styles related to the Comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.comment {
+  position: relative;
+  width: auto;
+  height: auto;
+  padding-top: 30px;
+  img.avatar {
+    float: left;
+  }
+  .comment-header {
+    position: absolute;
+    top: 30px;
+    margin-left: 15px;
+    display: inline-block;
+    .time_ago {
+      font-size: 13px;
+      margin-left: 20px;
+    }
+    .dropdown {
+      margin-left: 20px;
+    }
+  }
+
+  .comment-content {
+    margin: 25px 0px 0px 15px;
+    float: left;
+    width: 75%;
+    &:hover {
+      i {
+        display: block !important;
+      }
+    }
+  }
+
+  .edit_delete_area {
+    margin-left: 90px;
+    margin-top: 20px;
+  }
+
+}

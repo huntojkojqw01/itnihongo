@@ -73,7 +73,18 @@ ja:
     petname: "Pet name"
     albumname: "Album name"    
     close: "Close"
-  album:
-        title: "アルバム"
-        count_photos: "件"
-        empty: "ドラム"
+  photodetail:
+      view_album: "アルバムへ"
+      like_number: "いいね"
+      comment_number: "コメント"
+      comment_textarea: "あなたのコメント..."
+      comment_button: "コメント"
+      delete_post_text: "削除する..."
+  comment:
+      comment_delete_text: "削除する..."
+      comment_edit_text: "編集する..."
+  user_page:
+      edit_profile: "プロフィル編集"
+      image_text: "写真"
+      follow_pets: "フォローしたペット"
+      create_pet: "ペット登録"

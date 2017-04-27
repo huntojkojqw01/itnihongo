@@ -1,3 +1,157 @@
 // Place all the styles related to the Photos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.detail-page {
+  $color-border: #d9d9d9;
+  $green: #48b379;
+  $white: #eee9dc;
+  $red: #f98262;
+
+  padding-top: 50px;
+  .dropdown-post {
+    margin-top: -10px;
+    .glyphicon-chevron-down {
+      color: #b3b3b3;
+    }
+  }
+
+  .caption {
+    font-size: 20px;
+  }
+
+  .author {
+    font-size: 14px;
+  }
+  .main-image {
+    width: 100%;
+    height: auto;
+    padding: 20px 0px 10px 0px;
+  }
+
+  .btn-comment {
+    float: right;
+  }
+  #timeline {
+    list-style-type: none;
+    min-height: 400px;
+    margin: 50px 0 30px 120px;
+    padding-left: 30px;
+    border-left: 8px solid $green;
+    li {
+      margin: 40px 0;
+      position: relative;
+      min-height: 40px;
+    }
+    p {
+      margin: 0 0 15px
+    }
+    .date {
+      margin-top: -10px;
+      top: 50%;
+      left: -158px;
+      font-size: 0.95em;
+      line-height: 20px;
+      position: absolute;
+    }
+    .circle {
+      margin-top: -10px;
+      top: 50%;
+      left: -44px;
+      width: 20px;
+      height: 20px;
+      background: $green;
+      border: 5px solid #c9c9c9;
+      border-radius: 50%;
+      display: block;
+      position: absolute;
+    }
+    .content {
+      max-height: 20px;
+      width: 300px;
+      padding: 50px 20px 0px 0px;
+      border-color: transparent;
+      border-width: 1px;
+      border-style: solid;
+      position: relative;
+      display: none;
+      img {
+        width: 100px;
+        height: 100px;
+      }
+      &:before, &:after {
+        content: "";
+        width: 0;
+        height: 0;
+        border: solid transparent;
+        position: absolute;
+        pointer-events: none;
+      }
+      right: 100%;
+      &:before {
+        border-right-color: inherit;
+        border-width: 20px;
+        top: 50%;
+        margin-top: -20px;
+        margin-left: -40px;
+      }
+      p {
+        max-height: 0;
+        color: transparent;
+        text-align: justify;
+        word-break: normal;
+        hyphens: auto;
+        overflow-x: hidden;
+        overflow-y: hidden;
+      }
+
+    }
+    label {
+      font-size: 1.1em;
+      position: absolute;
+      z-index: 100;
+      cursor: pointer;
+      top: 10px;
+      max-width: 200px;
+      max-height: 50px;
+      overflow: hidden;
+      transition: transform 0.2s linear;
+    }
+
+    .radio {
+      display: none;
+    }
+
+    .radio:checked{
+      & + .relative {
+        label {
+          cursor: auto;
+          transform: translateX(110px);
+        }
+        .circle {
+          background: $red;
+          width: 30px;
+          height: 30px;
+          transform: translateX(-5px) translateY(-5px);
+        }
+      }
+      & ~ .content {
+        display: block;
+        max-height: 180px;
+        border: 1px solid $color-border;
+        margin-right: 20px;
+        transform: translateX(200px);
+        a > img {
+          margin-top: -50px;
+        }
+        transition: max-height 0.4s linear, border-color 0.5s linear, transform 0.2s linear;
+        p {
+          width: 300px;
+          max-height: 200px;
+          color: black;
+          transition: color 0.3s linear 0.3s;
+        }
+      }
+    }
+
+  }
+}

@@ -1,44 +1,59 @@
-<div class="row">
-	<div class="col-sm-8 col-md-8 col-lg-8">
-		<p>
-		  <strong>Caption:</strong>
-		  <%= @photo.caption %><br>
-		  by <%=@photo.owner_last_name%>
-		  <%=link_to '',@photo,method: :delete,data:{confirm: "Are you sua?"},class: 'btn btn-danger glyphicon glyphicon-trash' if current_user==@photo.user%>
-		</p>
-		<p>
-		  <strong>Image:</strong>
-		  <%= image_tag @photo.image,size: "500x500"%><br>
-		  <span id="like_numbers"><%= @photo.like_numbers%></span> likes
-		  <% if @like %>
-		  	<%=link_to "",@like,method: :delete,remote: true,class: "glyphicon glyphicon-thumbs-down",id: "dislike"%>
-		  <% else %>
-		  	<%=link_to "",likes_path(user_id: current_user.id,photo_id: @photo.id),method: :post,remote: true,class: "glyphicon glyphicon-thumbs-up",id: "like"%>
-		  <% end %>		  
-		  <br>
-		  <span id="comment_numbers"><%= @photo.comment_numbers%></span> comments<br>
-		</p>
+<div class="container detail-page">
+  <div class="row">
+    <div class="col-sm-8 col-md-8 col-lg-8">
+      <span class="caption"><%= @photo.caption %></span><br>
+      <span class="author">by <%= link_to @photo.owner_last_name, @photo.user%></span>
+      <div class="dropdown dropdown-post">
+        <span class="glyphicon glyphicon-chevron-down dropdown-toggle" data-toggle="dropdown"></span>
+        <ul class="dropdown-menu menu-post-actions" role="menu">
+          <li>
+            <% if current_user==@photo.user then%>
+            <i class="fa fa-times" aria-hidden="true"></i>
+            <%= link_to t('photodetail.delete_post_text'),@photo,method: :delete,data:{confirm: "Are you sure?"}%>
+            <% end%>
+          </li>
+        </ul>
+      </div>
+      <%= image_tag @photo.image,size: "200x200",class:"main-image"%><br>
+      <% if @like %>
+          <%=link_to "",@like,method: :delete,remote: true,class: "glyphicon glyphicon-thumbs-down",id: "dislike"%>
+      <% else %>
+          <%=link_to "",likes_path(user_id: current_user.id,photo_id: @photo.id),method: :post,remote: true,class: "glyphicon glyphicon-thumbs-up",id: "like"%>
+      <% end %>
+      <span id="like_numbers"><%= @photo.like_numbers.to_s%></span><%= ' '+t('photodetail.like_number')%>
+      <span id="comment_numbers"><%= @photo.comment_numbers.to_s%></span><%= ' '+t('photodetail.comment_number')%><br>
 
-		<p>
-		  <strong>Album:</strong>
-		  <%= @photo.album_name %>
-		</p>
-		<%=form_for(Comment.new,remote: true) do |f| %>
-			<%=f.hidden_field :user_id,value: current_user.id %><br>
-			<%=f.hidden_field :photo_id,value: @photo.id %><br>
-			<%=f.text_area :content%><br>
-			<%=f.submit 'Comment'%>
-		<% end %>
-		<div id="comment_area">
-			<%=render @comments%>			
-		</div>				
-	</div>
-	<div class="col-sm-4 col-md-4 col-lg-4">
-		<%=link_to 'View album',@photo.album,class: "btn btn-default"%><br>
-		<% @photos.each do |photo| %>
-			<%=link_to (image_tag photo.image,size: "40x40"),photo %><%=photo.caption%><br>
-		<% end %>
-	</div>
+      <%=form_for(Comment.new,remote: true) do |f| %>
+          <%=f.hidden_field :user_id,value: current_user.id %><br>
+          <%=f.hidden_field :photo_id,value: @photo.id %><br>
+          <%=f.text_area :content, class: "form-control", cols: 5, placeholder: t('photodetail.comment_textarea')%><br>
+          <%=f.submit t('photodetail.comment_button'), class: "btn btn-primary btn-comment" %>
+      <% end %>
+      <br><br><br>
+      <div id="comment_area">
+        <%=render @comments%>
+      </div>
+    </div>
+    <%=link_to session[:locale] == 'ja'? @photo.album_name+t('photodetail.view_album'): t('photodetail.view_album')+@photo.album_name,@photo.album,class: "btn btn-warning right-align"%><br>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <ul id='timeline'>
+        <% @photos.each do |photo| %>
+        <li class='photo'>
+          <input class='radio' id='photo_<%=photo.id%>' name='works' type='radio'>
+          <div class="relative">
+            <label for='photo_<%=photo.id%>'><%=photo.caption%></label>
+            <span class='date'><%= photo.created_at.strftime("%b %d, %Y")%></span>
+            <span class='circle'></span>
+          </div>
+          <div class='content'>
+            <%=link_to (image_tag photo.image,size: "40x40"),photo %><br>
+          </div>
+        </li>
+        <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
 
 
