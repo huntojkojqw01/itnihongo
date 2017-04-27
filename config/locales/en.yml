@@ -88,3 +88,7 @@ en:
     image_text: "Photos"
     follow_pets: "Followed Pets"
     create_pet: "New Pet"
+  album:
+    title: "Album"
+    count_photos: " pictures"
+    empty: "Empty"
