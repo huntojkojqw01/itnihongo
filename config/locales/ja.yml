@@ -73,3 +73,8 @@ ja:
     petname: "Pet name"
     albumname: "Album name"    
     close: "Close"
+  user_page:
+      edit_profile: "プロフィル編集"
+      image_text: "写真"
+      follow_pets: "フォローしたペット"
+      create_pet: "ペット登録"

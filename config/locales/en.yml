@@ -73,3 +73,8 @@ en:
     petname: "Pet name"
     albumname: "Album name"    
     close: "Close"
+  user_page:
+    edit_profile: "Edit Profile"
+    image_text: "Photos"
+    follow_pets: "Followed Pets"
+    create_pet: "New Pet"
