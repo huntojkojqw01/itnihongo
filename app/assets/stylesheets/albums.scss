@@ -1,3 +1,288 @@
 // Place all the styles related to the Albums controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.row {
+  height: 400px;
+}
+#container-photos {
+  position:relative;
+  padding-left: 4%;
+}
+#container-photos img {
+  position:absolute;
+  width: 300px;
+  height: 300px;
+  border: 1px solid rgba(0, 0, 0, .1);
+  cursor: pointer;
+}
+.album-desc {
+  padding: 10px 15px;
+  position: absolute;
+  width: 300px;
+  height: 50px;
+  background-color: #ffffff;
+  margin-top: 300px;
+  border: 1px solid #e9ebee;
+}
+.album-desc span {
+  padding: 15px 20px;
+}
+.album-desc a {
+  padding: 0px 10px;
+  font-size: 20px;
+}
+
+.button {
+  display: block;
+  border-radius: 2px;
+  background-color: #4CAF50;
+  border: none;
+  text-align: center;
+  font-size: 28px;
+  padding: 15px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.4s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+
+#first-image {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border: 1px solid rgba(0, 0, 0, .1);
+  cursor: pointer;
+  float: right!important;
+}
+#image-album {
+  position: relative;
+}
+#image-album img{
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border: 1px solid rgba(0, 0, 0, .1);
+  cursor: pointer;
+}
+@-webkit-keyframes imgFade {
+  0% {
+    opacity:1;
+  }
+  17% {
+    opacity:1;
+  }
+  25% {
+    opacity:0;
+  }
+  92% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@-moz-keyframes imgFade {
+  0% {
+    opacity:1;
+  }
+  17% {
+    opacity:1;
+  }
+  25% {
+    opacity:0;
+  }
+  92% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@-o-keyframes imgFade {
+  0% {
+    opacity:1;
+  }
+  17% {
+    opacity:1;
+  }
+  25% {
+    opacity:0;
+  }
+  92% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@keyframes imgFade {
+  0% {
+    opacity:1;
+  }
+  17% {
+    opacity:1;
+  }
+  25% {
+    opacity:0;
+  }
+  92% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+#container-photos:hover img {
+  -webkit-animation-name: imgFade;
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-duration: 8s;
+
+  -moz-animation-name: imgFade;
+  -moz-animation-timing-function: ease-in-out;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-duration: 8s;
+
+  -o-animation-name: imgFade;
+  -o-animation-timing-function: ease-in-out;
+  -o-animation-iteration-count: infinite;
+  -o-animation-duration: 8s;
+
+  animation-name: imgFade;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 8s;
+}
+#container-photos:hover img:nth-of-type(1) {
+  -webkit-animation-delay: 6s;
+  -moz-animation-delay: 6s;
+  -o-animation-delay: 6s;
+  animation-delay: 6s;
+}
+#container-photos:hover img:nth-of-type(2) {
+  -webkit-animation-delay: 4s;
+  -moz-animation-delay: 4s;
+  -o-animation-delay: 4s;
+  animation-delay: 4s;
+}
+#container-photos:hover img:nth-of-type(3) {
+  -webkit-animation-delay: 2s;
+  -moz-animation-delay: 2s;
+  -o-animation-delay: 2s;
+  animation-delay: 2s;
+}
+#container-photos img:nth-of-type(4) {
+  -webkit-animation-delay: 0;
+  -moz-animation-delay: 0;
+  -o-animation-delay: 0;
+  animation-delay: 0;
+}
+
+
+.page-container {
+  .center-align span {
+
+  }
+  ul.main-photos {
+    margin-top: -20%!important;
+    list-style-type: none;
+    padding-left: 0px;
+    li {
+      margin-bottom: 0px;
+      padding: 0px 15px 0px 0px;
+    }
+  }
+  .image-box {
+    position: relative;
+    /*border: 1px solid black;
+    border-radius: 2px;*/
+    width: 100%;
+    height: 200px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+    img:hover .image-info{
+      display: block;
+    }
+    .image-info{
+      .like-box {
+        position: absolute;
+        top: 5px;
+        right: 80px;
+        border-radius: 5px;
+        padding: 5px;
+        background-color: white;
+        opacity: 0.6;
+        .fa-heart {
+          font-size: 20px;
+          color: red;
+        }
+      }
+      .comment-box {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        border-radius: 5px;
+        padding: 5px;
+        background-color: white;
+        opacity: 0.6;
+        .fa-comments-o {
+          font-size: 20px;
+        }
+      }
+      .user-box {
+        position: absolute;
+        left: 10px;
+        bottom: 5px;
+        img {
+          width: 50px;
+          height: 50px;
+          border-radius: 100%;
+        }
+      }
+      .download-box {
+        position: absolute;
+        bottom: 5px;
+        right: 10px;
+        border-radius: 5px;
+        padding: 5px 15px;
+        background-color: white;
+        opacity: 0.6;
+        .fa-download {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
