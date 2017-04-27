@@ -83,3 +83,8 @@ vi:
   comment:
         comment_delete_text: "Xóa comment"
         comment_edit_text: "Chỉnh sửa comment"
+  user_page:
+      edit_profile: "Thay đổi thông tin cá nhân"
+      image_text: "Ảnh"
+      follow_pets: "Động vật đã theo dõi"
+      create_pet: "Thêm mới động vật"

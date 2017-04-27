@@ -83,3 +83,8 @@ ja:
   comment:
       comment_delete_text: "削除する..."
       comment_edit_text: "編集する..."
+  user_page:
+      edit_profile: "プロフィル編集"
+      image_text: "写真"
+      follow_pets: "フォローしたペット"
+      create_pet: "ペット登録"
