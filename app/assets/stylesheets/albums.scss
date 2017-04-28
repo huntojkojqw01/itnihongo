@@ -1,9 +1,7 @@
 // Place all the styles related to the Albums controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.row {
-  height: 400px;
-}
+
 #container-photos {
   position:relative;
   padding-left: 4%;
@@ -214,7 +212,6 @@
 
   }
   ul.main-photos {
-    margin-top: -20%!important;
     list-style-type: none;
     padding-left: 0px;
     li {
