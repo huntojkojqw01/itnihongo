@@ -24,6 +24,7 @@
       </ul>
     </div>
     <div class="col-sm-6 col-md-6 col-lg-6 text-align-right">
+      <%=link_to 'Albums',albums_path,class: "btn btn-info"%>
       <%=link_to t('user_page.follow_pets'),follow_path(@user),class: "btn btn-info"%>
       <%=link_to t('user_page.create_pet'),new_pet_path, class: "btn btn-warning btn-pet-register" %>
     </div>
