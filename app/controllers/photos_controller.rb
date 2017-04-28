@@ -15,7 +15,7 @@ class PhotosController < ApplicationController
     @comments=@photo.comments
     likes=Like.where("user_id = ? and photo_id = ?",current_user.id,@photo.id)    
     @like=likes.first if likes.any?
-    @photos=@photo.album.pet.photos.order(created_at: :desc)
+    @photos=@photo.album.pet.photos.where.not(id: @photo.id).limit(5).order(created_at: :desc)
   end
 
   # GET /photos/new
