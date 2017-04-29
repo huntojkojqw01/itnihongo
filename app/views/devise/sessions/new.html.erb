@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row">    
     <div class="main-login">
       <div class="brand center-align">
         <i class="fa fa-camera" aria-hidden="true" style="font-size: 50px"></i>
@@ -9,9 +9,9 @@
         <div class="form-group">
           <div class="col-sm-2 col-md-2 col-lg-2"></div>
           <div class="col-sm-9 col-md-9 col-lg-9 center-align">
-            <a href="" class="btn btn-default btn-login-facebook form-control">
+            <a href="<%=user_facebook_omniauth_authorize_path%>" class="btn btn-default btn-login-facebook form-control">
               <i class="fa fa-facebook-square" aria-hidden="true"></i>
-              <%=t('login.loginwithfacebook')%>
+              <%=t('login.loginwithfacebook')%>             
             </a>
             <p><%=t('login.or')%></p>
           </div>
@@ -61,3 +61,21 @@
     </div>
   </div>
 </div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1870991616498940',
+      xfbml      : true,
+      version    : 'v2.9'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
