@@ -2,7 +2,7 @@ class PetsController < ApplicationController
 	skip_before_action :verify_authenticity_token
 	before_action :authenticate_user!, except: :show
 	def new
-		@pet=Pet.new		
+		@pet=Pet.new(:birthday => Date.today)		
 	end
 	def create
 		@pet=Pet.new(pet_params)

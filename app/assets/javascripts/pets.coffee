@@ -2,8 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).on 'turbolinks:load', ->
-	$("#pet_avatar").change ->		
-		$(this).closest('div').find('label img').attr('src', window.URL.createObjectURL(this.files[0]))
+	$("#pet_avatar").change ->
+		$('img').attr('src', window.URL.createObjectURL(this.files[0]))
 	
 	$("#view_photos").click ->	
 		$("#view_photos").attr("disabled",true);	
