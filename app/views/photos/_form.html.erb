@@ -13,7 +13,7 @@
 
   <div class="field" id="photo-select-area">
     <h1><%=t('newphoto.title')%></h1>
-    <%= image_tag(photo.image, size: "250x250", id: "photo-upload", style:"display: none")%>
+    <%= cl_image_tag(photo.image, size: "250x250", id: "photo-upload", style:"display: none")%>
     <label for="photo_image" class="btn btn-primary btn-photo-select"><%=t('newphoto.select')%></label>
     <%= f.file_field :image,style: "visibility:hidden"%>
   </div>

@@ -2,7 +2,7 @@
 	<% if user_signed_in? %>
 		<%=form_for @pet,remote: true do |f|%>
 			<div class="col-sm-3 col-md-3 col-lg-3">
-				<label for="pet_avatar"><%=image_tag @pet.avatar,size: "200x200" if @pet.avatar%></label><br>
+				<label for="pet_avatar"><%=cl_image_tag @pet.avatar,size: "200x200" if @pet.avatar%></label><br>
 				Pet name: <%=@pet.name%><br>
 				Follow: <%=@pet.follow_numbers%>
 				<%= f.file_field :avatar,style: "visibility:hidden"%>
@@ -57,7 +57,7 @@
 		</div>
 	<% else %>
 		<div class="col-sm-3 col-md-3 col-lg-3">
-			<label ><%=image_tag @pet.avatar,size: "200x200" if @pet.avatar%></label><br>
+			<label ><%=cl_image_tag @pet.avatar,size: "200x200" if @pet.avatar%></label><br>
 				Pet name: <%=@pet.name%><br>
 				Follow: <%=@pet.follow_numbers%>			
 			</div>	
@@ -103,7 +103,7 @@
 	<div id="show_photos">
 		<% @photos.each do |photo| %>
 			<div class="col-sm-3 col-md-3 col-lg-3">
-				<%=link_to (image_tag photo.image,size: "200x200"),photo %>
+				<%=link_to (cl_image_tag photo.image,size: "200x200"),photo %>
 			</div>
 		<% end %>
 	</div>
@@ -116,7 +116,7 @@
 				<% pic="/uploads/default.jpeg" %>
 			<% end %>
 			<div class="col-sm-3 col-md-3 col-lg-3">
-				<%=link_to (image_tag pic,size: "200x200" ),album %><br>
+				<%=link_to (cl_image_tag pic,size: "200x200" ),album %><br>
 				Album name: <%=album.name%><br>
 				<%= album.photo_numbers%> photos
 			</div>

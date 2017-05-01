@@ -7,7 +7,7 @@
       </div>
       <div class="field">
         <%= f.label t('newpet.avatar') %>    
-        <%= image_tag(@pet.avatar, size: "250x250")%>
+        <%= cl_image_tag(@pet.avatar, size: "250x250")%>
         <label for="pet_avatar" class="btn btn-default"><%=t('newpet.select')%></label>
         <%= f.file_field :avatar,style: "visibility:hidden"%>                
       </div>
