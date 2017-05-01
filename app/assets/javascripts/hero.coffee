@@ -4,7 +4,8 @@ $(document).on 'turbolinks:load', ->
 			$("div#edit_delete_area").each (event) ->				
 				if $(e.target).parent().find('#edit_delete_area')[0]!=$(this)[0]
 					$(this).parent().find('p.comment-content').show()
-					$(this).hide()		
+					$(this).hide()
+	$(".alert" ).fadeOut(5000)		
 jQuery ->
 	$.fn.modal_success = ()->        
         this.modal('hide')

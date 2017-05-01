@@ -13,8 +13,8 @@
           </li>
         </ul>
       </div>
-      <% end%>
-      <%= image_tag @photo.image,size: "200x200",class:"main-image"%><br>
+      <% end%>      
+      <%= cl_image_tag @photo.image,size: "200x200",class:"main-image"%><br>
       <% if @like %>
           <%=link_to "",@like,method: :delete,remote: true,class: "glyphicon glyphicon-thumbs-down",id: "dislike"%>
       <% else %>
@@ -46,7 +46,7 @@
             <span class='circle'></span>
           </div>
           <div class='content'>
-            <%=link_to (image_tag photo.image,size: "40x40"),photo %><br>
+            <%=link_to (cl_image_tag photo.image,size: "40x40"),photo %><br>
           </div>
         </li>
         <% end %>
