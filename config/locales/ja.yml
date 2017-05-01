@@ -21,6 +21,8 @@
 
 ja:
   hello: "こんにちは"
+  notfound: "deta ga arimasen"
+  notpermit: "mirukoto ga dekimasen"
   navbar:
     home: "ホーム"
     new: "新写真"

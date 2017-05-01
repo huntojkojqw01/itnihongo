@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   resources :follows, only: [:create,:destroy,:show]
   resources :comments, only: [:create,:update,:destroy]
   resources :likes, only: [:create,:destroy]
+  resources :searchs, only: :index
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

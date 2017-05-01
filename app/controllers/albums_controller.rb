@@ -1,5 +1,5 @@
 class AlbumsController < ApplicationController
-	before_action :authenticate_user!
+	before_action :authenticate_user!, except: [:index,:new,:show]
 	before_action :album_params, only: :create
 	def new
 		@album=Album.new
@@ -21,8 +21,12 @@ class AlbumsController < ApplicationController
 	end
 	def show
 		@album=Album.find_by(id: params[:id])
-		redirect_to root_path unless @album
-		@photos=@album.photos
+		if @album
+			@photos=@album.photos
+		else
+			flash[:danger]=t 'notfound'
+			redirect_to root_path
+		end		
 	end
 	private
     def album_params

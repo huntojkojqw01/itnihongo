@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index,:show]
   # GET /photos
   # GET /photos.json
   def index    
@@ -12,10 +12,17 @@ class PhotosController < ApplicationController
   # GET /photos/1
   # GET /photos/1.json
   def show
-    @comments=@photo.comments
-    likes=Like.where("user_id = ? and photo_id = ?",current_user.id,@photo.id)    
-    @like=likes.first if likes.any?
-    @photos=@photo.album.pet.photos.where.not(id: @photo.id).limit(5).order(created_at: :desc)
+    if @photo
+      @comments=@photo.comments
+      if user_signed_in?
+        likes=Like.where("user_id = ? and photo_id = ?",current_user.id,@photo.id)    
+        @like=likes.first if likes.any?
+      end
+      @photos=@photo.album.pet.photos.where.not(id: @photo.id).limit(5).order(created_at: :desc)
+    else
+      flash[:danger]=t 'notfound'
+      redirect_to root_path
+    end
   end
 
   # GET /photos/new
@@ -84,7 +91,7 @@ class PhotosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_photo
-      @photo = Photo.find_by(id: params[:id])
+      @photo = Photo.find_by(id: params[:id])      
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

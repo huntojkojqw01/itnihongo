@@ -1,0 +1,13 @@
+<% @results.each do |x| %>
+	<% case x.searchable_type %>
+	<% when "Album","Pet" %>
+		<%=x.searchable_type%>: <%= link_to x.searchable.name, x.searchable %><br>
+	<% when "Comment" %>
+		<%=x.searchable_type%> for: <%= link_to (image_tag x.searchable.photo.image,size: "40x40"), x.searchable.photo %><br>
+	<% when "Photo" %>
+		<%=x.searchable_type%>: <%= link_to x.searchable.caption, x.searchable %><br>
+	<% when "Tag" %>
+		<%=x.searchable_type%>: <%= link_to x.searchable.name, x.searchable %><br>
+	<% end %>
+<% end %>
+

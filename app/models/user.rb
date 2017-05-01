@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  # ["id", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "first_name", "last_name", "gender", "avatar", "birthday", "address", "other_info", "created_at", "updated_at", "locale", "confirmation_token", "confirmed_at", "confirmation_sent_at", "unconfirmed_email", "provider", "uid"]
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -12,6 +13,7 @@ class User < ApplicationRecord
   has_many :follows, dependent: :destroy
   has_many :following_photos, through: :follows, source: :photos, dependent: :destroy
   validates :first_name,:last_name, presence: true
+  
   def followed? pet
   	return following_pets.include? pet
   end
