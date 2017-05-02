@@ -11,8 +11,9 @@ class FollowsController < ApplicationController
 	def create
 		@follow=Follow.new(user_id: current_user.id,pet_id: follow_params[:pet_id])
 		respond_to do |format|
-			if @follow.save							
-				format.js
+			if @follow.save
+				Notification.create(recipient: @follow.user, user: current_user, action: "followed", notifiable: @follow.pet)
+		        format.js
 			else				     	
 	        	format.json { render json: @follow.errors, status: :unprocessable_entity}
 			end
