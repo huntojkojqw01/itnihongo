@@ -37,6 +37,8 @@ class PhotosController < ApplicationController
         if current_user.pets.count>=1
           @albums=Pet.find_by(id: current_user.pets.first.id).albums
         else
+          flash[:warning]="You haven't a pet yet!"
+          redirect_to new_pet_path
           @albums=[]    
         end 
       end
@@ -58,8 +60,9 @@ class PhotosController < ApplicationController
         end        
         format.html { redirect_to @photo, notice: 'Photo was successfully created.' }
         format.json { render :show, status: :created, location: @photo }
-      else        
-        format.html { render :new }
+      else
+        @albums=[] if @photo.album_id==nil                      
+        format.html { render "new"}
         format.json { render json: @photo.errors, status: :unprocessable_entity }
       end
     end
