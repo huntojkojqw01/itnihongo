@@ -5,7 +5,15 @@ $(document).on 'turbolinks:load', ->
 				if $(e.target).parent().find('#edit_delete_area')[0]!=$(this)[0]
 					$(this).parent().find('p.comment-content').show()
 					$(this).hide()
-	$(".alert" ).fadeOut(5000)		
+	$(".alert" ).fadeOut(5000)
+	$.get
+		url: "/notifications"
+		success: (data) ->							
+			if data.length>1			
+				$("#notifications").html(data)
+				$("#notifications").closest('li').find('span').css('color', 'red')
+				$("#notifications").closest('li').find('span').text($("#notifications li").length)
+		dataType: "html"			
 jQuery ->
 	$.fn.modal_success = ()->        
         this.modal('hide')
