@@ -1,0 +1,29 @@
+<% case notification.action %>
+	<% when "followed" %>
+		<li id='<%=notification.id%>'>
+			<b>User: <%= notification.user.last_name %></b> 
+			<%= notification.action %> 
+			<strong><%=link_to notification.notifiable.name,notification.notifiable%></strong>!
+		</li>
+	<% when "uploaded" %>
+		<li id='<%=notification.id%>'>
+			<b>Pet: <%= notification.notifiable.name %></b> 
+			<%= notification.action %> 
+			<strong><%=link_to 'photo',notification.notifiable%></strong>!
+		</li>
+	<% when "commented" %>
+		<li id="<%=notification.id%>">
+			<b><%= notification.user.last_name %></b> 
+			<%= notification.action %> 
+			<strong><%=link_to truncate(notification.notifiable.caption,length: 10),notification.notifiable%></strong>!
+		</li>
+<% end %>
+<script type="text/javascript">
+	$("li#<%=notification.id%> a").click(function(){		
+		$.ajax({
+	        url: '/notifications/'+'<%=notification.id%>',
+	        type: 'DELETE'	       
+	    });
+	});
+	
+</script>

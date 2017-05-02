@@ -93,4 +93,6 @@ Rails.application.configure do
     :password       => ENV['SENDGRID_PASSWORD'],
     :domain         => ENV['SENDGRID_DOMAIN']
   }
+  config.web_socket_server_url = "wss://kawaiipetto.herokuapp.com/cable"
+  config.action_cable.allowed_request_origins = ['https://kawaiipetto.herokuapp.com', 'http://kawaiipetto.herokuapp.com']
 end

@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :follows, dependent: :destroy
   has_many :following_photos, through: :follows, source: :photos, dependent: :destroy
   validates :first_name,:last_name, presence: true
-  
+  has_many :notifications, foreign_key: :recipient_id
   def followed? pet
   	return following_pets.include? pet
   end

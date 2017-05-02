@@ -16,5 +16,7 @@ Rails.application.routes.draw do
   resources :comments, only: [:create,:update,:destroy]
   resources :likes, only: [:create,:destroy]
   resources :searchs, only: :index
+  resources :notifications, only: [:index,:destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  mount ActionCable.server => '/cable'
 end
