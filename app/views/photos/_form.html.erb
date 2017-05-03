@@ -32,7 +32,7 @@
     <% else %>
         <div class="field">
           <%= f.label t('newphoto.album') %>
-          <%= album.name%>
+          <%= text_field_tag :album_name,album.name,disabled: true%>
           <%= f.hidden_field :album_id,value: album.id%>
         </div>
     <% end %>
