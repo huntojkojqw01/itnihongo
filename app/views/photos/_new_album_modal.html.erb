@@ -7,6 +7,7 @@
       </div>
       <div class="modal-body" >
         <%= form_for(Album.new, remote: true) do |f|%>
+          <div id="errors"></div>
           <div class="form-group">
             <%= label_tag t('newphoto.petname')%>
             <input type="text" name="petname" value="" readonly><br>

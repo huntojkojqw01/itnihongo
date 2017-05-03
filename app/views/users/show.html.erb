@@ -2,7 +2,7 @@
   <div class="user-info">
     <div class="row user-info-header">
       <div class="avatar">
-        <%=image_tag @user.avatar,size: "200x200"%>
+        <%=cl_image_tag @user.avatar,size: "200x200"%>
       </div>
       <div class="profile-button">
         <%=link_to t('user_page.edit_profile'),edit_user_registration_path,class: "btn btn-default btn-edit-profile"%>
@@ -24,15 +24,13 @@
       </ul>
     </div>
     <div class="col-sm-6 col-md-6 col-lg-6 text-align-right">
+      <%=link_to 'Albums',albums_path,class: "btn btn-info"%>
       <%=link_to t('user_page.follow_pets'),follow_path(@user),class: "btn btn-info"%>
       <%=link_to t('user_page.create_pet'),new_pet_path, class: "btn btn-warning btn-pet-register" %>
     </div>
   </div>
   &nbsp;
   <div class="row">
-    <%= render "photos/all_photo", photos: @photos %>
+    <%= render "photos/all_photo" %>
   </div>
 </div>
-
-
-

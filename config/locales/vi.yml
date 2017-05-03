@@ -21,6 +21,8 @@
 
 vi:
   hello: "Xin chào"
+  notfound: "Không tìm thấy dữ liệu"
+  notpermit: "Bạn không thể xem trang đó"
   navbar:
     home: "Trang chủ"
     new: "Ảnh mới"

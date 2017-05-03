@@ -4,7 +4,7 @@
 		user=pet.user
 	%>
 	<div id='follow-pet-avatar' class='col-md-3'>
-		<%=link_to (image_tag pet.avatar,size: "80x80"),pet %>
+		<%=link_to (cl_image_tag pet.avatar,size: "80x80"),pet %>
 	</div>
 	<div class='col-sm-5 col-md-5 col-lg-5'>
 		<%=pet.name%><br>

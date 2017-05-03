@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: kawaiipetto
+  api_key: '881235433892437'
+  api_secret: XZ1pONxHP6vE2c7Oatyemq1eo-0
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: kawaiipetto
+  api_key: '881235433892437'
+  api_secret: XZ1pONxHP6vE2c7Oatyemq1eo-0
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: kawaiipetto
+  api_key: '881235433892437'
+  api_secret: XZ1pONxHP6vE2c7Oatyemq1eo-0
+  enhance_image_tag: true
+  static_image_support: false

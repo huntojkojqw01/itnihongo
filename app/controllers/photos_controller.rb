@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index,:show]
   # GET /photos
   # GET /photos.json
   def index    
@@ -12,10 +12,17 @@ class PhotosController < ApplicationController
   # GET /photos/1
   # GET /photos/1.json
   def show
-    @comments=@photo.comments
-    likes=Like.where("user_id = ? and photo_id = ?",current_user.id,@photo.id)    
-    @like=likes.first if likes.any?
-    @photos=@photo.album.pet.photos.where.not(id: @photo.id).limit(5).order(created_at: :desc)
+    if @photo
+      @comments=@photo.comments
+      if user_signed_in?
+        likes=Like.where("user_id = ? and photo_id = ?",current_user.id,@photo.id)    
+        @like=likes.first if likes.any?
+      end
+      @photos=@photo.album.pet.photos.where.not(id: @photo.id).limit(5).order(created_at: :desc)
+    else
+      flash[:danger]=t 'notfound'
+      redirect_to root_path
+    end
   end
 
   # GET /photos/new
@@ -30,6 +37,8 @@ class PhotosController < ApplicationController
         if current_user.pets.count>=1
           @albums=Pet.find_by(id: current_user.pets.first.id).albums
         else
+          flash[:warning]="You haven't a pet yet!"
+          redirect_to new_pet_path
           @albums=[]    
         end 
       end
@@ -43,14 +52,17 @@ class PhotosController < ApplicationController
   # POST /photos
   # POST /photos.json
   def create
-    @photo = Photo.new(photo_params)
-
+    @photo = Photo.new(photo_params)    
     respond_to do |format|
       if @photo.save
+        @photo.pet.users.each do |user|
+          Notification.create(recipient: user, user: @photo.user, action: "uploaded", notifiable: @photo.pet)
+        end        
         format.html { redirect_to @photo, notice: 'Photo was successfully created.' }
         format.json { render :show, status: :created, location: @photo }
       else
-        format.html { render :new }
+        @albums=[] if @photo.album_id==nil                      
+        format.html { render "new"}
         format.json { render json: @photo.errors, status: :unprocessable_entity }
       end
     end
@@ -84,7 +96,7 @@ class PhotosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_photo
-      @photo = Photo.find_by(id: params[:id])
+      @photo = Photo.find_by(id: params[:id])      
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
