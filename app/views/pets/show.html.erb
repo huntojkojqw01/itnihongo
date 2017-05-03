@@ -1,5 +1,5 @@
 <div class="row">
-	<% if user_signed_in? %>
+	<% if user_signed_in? && current_user==@pet.user %>
 		<%=form_for @pet,remote: true do |f|%>
 			<div class="col-sm-3 col-md-3 col-lg-3">
 				<label for="pet_avatar"><%=cl_image_tag @pet.avatar,size: "200x200" if @pet.avatar%></label><br>
