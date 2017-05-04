@@ -244,3 +244,21 @@ body {
     }
   }
 }
+
+
+ul.horizontal-menu {
+  list-style-type: none;
+  padding-left: 0px;
+  li {
+    padding-left: 0px;
+    display: inline;
+  }
+}
+
+.ul-basic {
+  list-style-type: none;
+  padding-left: 0px;
+  li {
+    padding-left: 0px;
+  }
+}

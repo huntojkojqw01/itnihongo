@@ -1,126 +1,129 @@
-<div class="row">
-	<% if user_signed_in? && current_user==@pet.user %>
-		<%=form_for @pet,remote: true do |f|%>
-			<div class="col-sm-3 col-md-3 col-lg-3">
-				<label for="pet_avatar"><%=cl_image_tag @pet.avatar,size: "200x200" if @pet.avatar%></label><br>
-				Pet name: <%=@pet.name%><br>
-				Follow: <%=@pet.follow_numbers%>
-				<%= f.file_field :avatar,style: "visibility:hidden"%>
-			</div>	
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				<%=t('showpet.title')%><br>					
-			      <div class="field">    
-			        <%= f.hidden_field :user_id,value: current_user.id %>
-			      </div>	      
-			      <div class="field">
-			        <%= t('newpet.name') %>
-			        <%= f.text_field :name, autocomplete: "off" %>
-			      </div>
-			      <div class="field">
-			        <%= t('newpet.kind') %>
-			        <%= f.collection_select :kind_id,Kind.all,:id,:name %>
-			      </div>	      
-			      <div class="field">
-			        <%= t('newpet.gender') %>
-			        <%=t('newpet.male')%><%= f.radio_button :gender,1,checked: true %>
-			        <%=t('newpet.female')%><%= f.radio_button :gender,0 %>
-			      </div>	      
-			      <div class="field">
-			        <%= t('newpet.birthday') %>
-			        <%= f.date_select :birthday, start_year: 1917, end_year: 2002 %>
-			      </div>	      
-			      <div class="field">
-			        <%= t('newpet.weight') %>
-			        <%= f.number_field :weight%>
-			      </div>
-			      <div class="field">
-			        <%= t('newpet.description') %><br />
-			        <%= f.text_area :description%>
-			      </div>
-			      <div class="actions">
-			        <%= f.submit t('showpet.submit') %>
-			      </div>	
-				
-			</div>
-		<%end%>
-		<div class="col-sm-3 col-md-3 col-lg-3">
+<div class="container" id="pet-page">
+  <div class="row">
+    <% if user_signed_in? && current_user==@pet.user %>
+        <%=form_for @pet,remote: true do |f|%>
+            <div class="col-sm-3 col-md-3 col-lg-3 center-align">
+              <label for="pet_avatar"><%=cl_image_tag @pet.avatar,size: "200x200", class: "pet-avatar" if @pet.avatar%></label><br>
+              <h2><%=@pet.name%></h2>
+              Follow: <%=@pet.follow_numbers%>
+              <%= f.file_field :avatar,style: "visibility:hidden"%>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6">
+              <div class="row col-sm-12 col-md-12 col-lg-12">
+                <h3><b><%=t('showpet.title')%></b></h3>
+              </div>
+              <div class="field">
+                <%= f.hidden_field :user_id,value: current_user.id %>
+              </div>
+              <div class="field row">
+                <div class="col-sm-3 col-md-3 col-lg-3"><%= t('newpet.name') %></div>
+                <div class="col-sm-9 col-md-9 col-lg-9"><%= f.text_field :name, autocomplete: "off", class: "form-control" %></div>
+              </div>
+              <div class="field row">
+                <div class="col-sm-3 col-md-3 col-lg-3"><%= t('newpet.kind') %></div>
+                <div class="col-sm-9 col-md-9 col-lg-9"><%= f.collection_select :kind_id,Kind.all,:id,:name,{}, {class: "form-control"} %></div>
+              </div>
+              <div class="field row">
+                <div class="col-sm-3 col-md-3 col-lg-3"><%= t('newpet.gender')%></div>
+                <div class="col-sm-9 col-md-9 col-lg-9">
+                  <%=t('newpet.male')%><%= f.radio_button :gender,1,checked: true%>
+                  <%=t('newpet.female')%><%= f.radio_button :gender,0%>
+                </div>
+              </div>
+              <div class="field row">
+                <div class="col-sm-3 col-md-3 col-lg-3"><%= t('newpet.birthday') %></div>
+                <div class="col-sm-9 col-md-9 col-lg-9"><%= f.date_select :birthday, {start_year: 1917, end_year: 2002}, :class => "form-control date-select" %></div>
+              </div>
+              <div class="field row">
+                <div class="col-sm-3 col-md-3 col-lg-3"><%= t('newpet.weight') %></div>
+                <div class="col-sm-9 col-md-9 col-lg-9"><%= f.number_field :weight, class: "form-control"%></div>
+              </div>
+              <div class="field row">
+                <div class="col-sm-3 col-md-3 col-lg-3"><%= t('newpet.description') %></div>
+                <div class="col-sm-9 col-md-9 col-lg-9"><%= f.text_area :description, rows: "5", class: "form-control"%></div>
+              </div>
+              <div class="actions row">
+                <div class="col-sm-3 col-md-3 col-lg-3"></div>
+                <div class="col-sm-9 col-md-9 col-lg-9"><%= f.submit t('showpet.submit'), class: "btn btn-primary" %></div>
+              </div>
 
-			<% if current_user.is_owner? @pet %>
-				<%=link_to t('showpet.delete'),@pet,method: :delete,data: {confirm: "Are you sua?"},class: 'btn btn-danger'%>
-			<% else %>			
-				<% if current_user.followed? @pet %>
-					<%=render 'follows/unfollow_button', follow: Follow.where(user_id: current_user.id,pet_id: @pet.id).first %>
-				<% else %>
-					<%=render 'follows/follow_button', pet_id: @pet.id %>
-				<% end %>
-			<% end %>		
-		</div>
-	<% else %>
-		<div class="col-sm-3 col-md-3 col-lg-3">
-			<label ><%=cl_image_tag @pet.avatar,size: "200x200" if @pet.avatar%></label><br>
-				Pet name: <%=@pet.name%><br>
-				Follow: <%=@pet.follow_numbers%>			
-			</div>	
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				<%=t('showpet.title')%><br>				
-			      	      
-			      <div class="field">
-			        <%= t('newpet.name') %>:
-			        <%= @pet.name %>
-			      </div>
-			      <div class="field">
-			        <%= t('newpet.kind') %>:
-			        <%= @pet.kind.name %>
-			      </div>	      
-			      <div class="field">
-			        <%= t('newpet.gender') %>:
-			        <%=t('newpet.male') if @pet.gender==1%>
-			        <%=t('newpet.female') if @pet.gender==0%>
-			      </div>	      
-			      <div class="field">
-			        <%= t('newpet.birthday') %>:
-			        <%= @pet.birthday.strftime("%m/%d/%Y") %>
-			      </div>	      
-			      <div class="field">
-			        <%= t('newpet.weight') %>:
-			        <%= @pet.weight%>
-			      </div>
-			      <div class="field">
-			        <%= t('newpet.description') %>:<br />
-			        <%= @pet.description%>
-			      </div>				
-			</div>
-		</div>
-		<div class="col-sm-3 col-md-3 col-lg-3">			
-		</div>
-	<% end %>
-</div>
-<div class="row">
-	<button id="view_photos" class="btn btn-default">ペットの写真</button>
-	<button id="view_albums" class="btn btn-default" disabled="true">アルバム</button>
-</div>
-<div class="row" id="content">
-	<div id="show_photos">
-		<% @photos.each do |photo| %>
-			<div class="col-sm-3 col-md-3 col-lg-3">
-				<%=link_to (cl_image_tag photo.image,size: "200x200"),photo %>
-			</div>
-		<% end %>
-	</div>
-	<div id="show_albums" hidden="true">
-		<%=link_to '',new_album_path %>
-		<% @albums.each do |album| %>
-			<% if album.first_photo %>
-				<% pic=album.first_photo.image %>
-			<% else %>
-				<% pic=default_image %>
-			<% end %>
-			<div class="col-sm-3 col-md-3 col-lg-3">
-				<%=link_to (cl_image_tag pic,size: "200x200" ),album %><br>
-				Album name: <%=album.name%><br>
-				<%= album.photo_numbers%> photos
-			</div>
-		<% end %>
-	</div>
+            </div>
+        <%end%>
+    <% else %>
+        <div class="col-sm-3 col-md-3 col-lg-3 center-align">
+          <label ><%=cl_image_tag @pet.avatar,size: "200x200", class: "pet-avatar" if @pet.avatar%></label>
+          <h2><%=@pet.name%></h2>
+          Follow: <%=@pet.follow_numbers%>
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-6">
+          <div class="row col-sm-12 col-md-12 col-lg-12">
+            <h3><b><%=t('showpet.title')%></b></h3>
+          </div>
+
+          <div class="field row">
+            <div class="col-sm-3 col-md-3 col-lg-3"><%= t('newpet.name') %></div>
+            <div class="col-sm-9 col-md-9 col-lg-9"><%= @pet.name %></div>
+          </div>
+          <div class="field row">
+            <div class="col-sm-3 col-md-3 col-lg-3"><%= t('newpet.kind') %></div>
+            <div class="col-sm-9 col-md-9 col-lg-9">
+              <%= @pet.kind.name %>
+            </div>
+          </div>
+          <div class="field row">
+            <div class="col-sm-3 col-md-3 col-lg-3"><%= t('newpet.gender')%></div>
+            <div class="col-sm-9 col-md-9 col-lg-9">
+              <%=t('newpet.male') if @pet.gender==1%>
+              <%=t('newpet.female') if @pet.gender==0%>
+            </div>
+          </div>
+          <div class="field row">
+            <div class="col-sm-3 col-md-3 col-lg-3"><%= t('newpet.birthday') %></div>
+            <div class="col-sm-9 col-md-9 col-lg-9">
+              <%= @pet.birthday.strftime("%m/%d/%Y") %>
+            </div>
+          </div>
+          <div class="field row">
+            <div class="col-sm-3 col-md-3 col-lg-3"><%= t('newpet.weight') %></div>
+            <div class="col-sm-9 col-md-9 col-lg-9">
+              <%= @pet.weight%>
+            </div>
+          </div>
+          <div class="field row">
+            <div class="col-sm-3 col-md-3 col-lg-3"><%= t('newpet.description') %></div>
+            <div class="col-sm-9 col-md-9 col-lg-9"><%= @pet.description%></div>
+          </div>
+        </div>
+        <div class="col-sm-3 col-md-3 col-lg-3">
+        </div>
+    <% end %>
+    <div class="col-sm-3 col-md-3 col-lg-3 text-align-right">
+      <br>
+      <% if current_user.is_owner? @pet %>
+          <%=link_to t('showpet.delete'),@pet,method: :delete,data: {confirm: "Are you sua?"},class: 'btn btn-danger'%>
+      <% else %>
+          <% if current_user.followed? @pet %>
+              <%=render 'follows/unfollow_button', follow: Follow.where(user_id: current_user.id,pet_id: @pet.id).first %>
+          <% else %>
+              <%=render 'follows/follow_button', pet_id: @pet.id %>
+          <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <ul class="horizontal-menu nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#show_photos"><%= @photos.count%> 写真</a></li>
+      <li><a data-toggle="tab" href="#show_albums">アルバム</a></li>
+    </ul>
+  </div>
+  <div class="row tab-content" id="content">
+    <div id="show_photos" class="tab-pane fade in active">
+      <%= render 'photos/all_photo', {photos: @photos}%>
+    </div>
+    <div id="show_albums" class="tab-pane fade">
+      <%=link_to '',new_album_path %>
+      <%= render 'albums/list_album', {list_album: @pet.albums} %>
+    </div>
+  </div>
 </div>
 

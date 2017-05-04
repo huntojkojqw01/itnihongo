@@ -1,0 +1,30 @@
+<ul class="ul-basic list-album">
+  <% if current_user == list_album[0].pet.user %>
+      <li class="col-sm-4 col-md-4 col-lg-4">
+        <label id="new_album" class="btn-add-new-album center-align">
+          <span class="glyphicon glyphicon-plus"></span>
+          <p class="text-add-new-album">アルバムを作成</p>
+        </label>
+      </li>
+  <% end%>
+  <% list_album.each do |album| %>
+    <li class="col-sm-4 col-md-4 col-lg-4" id="container-photos">
+      <% album.photos.each do |photo| %>
+          <img src= <%= photo.image%> >
+      <%end%>
+
+      <%if album.photos.count == 0%>
+          <%= link_to (cl_image_tag "http://imaging.nikon.com/lineup/dslr/df/img/sample/img_02.jpg"), album_path(id: album.id)%>
+      <% end %>
+      <div class="album-desc">
+        <%= link_to (album.name), album_path(id: album.id)%>
+        <% if album.photos.count == 0 %>
+            <span> <%= t('album.empty')%> </span>
+        <%else%>
+            <span> <%=album.photos.count.to_s +  t('album.count_photos') %></span>
+        <% end %>
+      </div>
+    </li>
+  <% end%>
+</ul>
+<%=render 'photos/new_album_modal'%>
