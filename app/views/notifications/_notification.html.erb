@@ -7,7 +7,7 @@
 		</li>
 	<% when "uploaded" %>
 		<li id='<%=notification.id%>'>
-			<b>Pet: <%= notification.notifiable.name %></b> 
+			<b>Pet: <%= notification.notifiable.pet.name %></b> 
 			<%= notification.action %> 
 			<strong><%=link_to 'photo',notification.notifiable%></strong>!
 		</li>

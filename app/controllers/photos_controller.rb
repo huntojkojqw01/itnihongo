@@ -56,7 +56,7 @@ class PhotosController < ApplicationController
     respond_to do |format|
       if @photo.save
         @photo.pet.users.each do |user|
-          Notification.create(recipient: user, user: @photo.user, action: "uploaded", notifiable: @photo.pet)
+          Notification.create(recipient: user, user: @photo.user, action: "uploaded", notifiable: @photo)
         end        
         format.html { redirect_to @photo, notice: 'Photo was successfully created.' }
         format.json { render :show, status: :created, location: @photo }
