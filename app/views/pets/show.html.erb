@@ -99,15 +99,17 @@
     <% end %>
     <div class="col-sm-3 col-md-3 col-lg-3 text-align-right">
       <br>
-      <% if current_user.is_owner? @pet %>
-          <%=link_to t('showpet.delete'),@pet,method: :delete,data: {confirm: "Are you sure?"},class: 'btn btn-danger'%>
-      <% else %>
-          <% if current_user.followed? @pet %>
-              <%=render 'follows/unfollow_button', follow: Follow.where(user_id: current_user.id,pet_id: @pet.id).first %>
-          <% else %>
-              <%=render 'follows/follow_button', pet_id: @pet.id %>
-          <% end %>
-      <% end %>
+      <% if user_signed_in? %>
+        <% if current_user.is_owner? @pet %>
+            <%=link_to t('showpet.delete'),@pet,method: :delete,data: {confirm: "Are you sure?"},class: 'btn btn-danger'%>
+        <% else %>
+            <% if current_user.followed? @pet %>
+                <%=render 'follows/unfollow_button', follow: Follow.where(user_id: current_user.id,pet_id: @pet.id).first %>
+            <% else %>
+                <%=render 'follows/follow_button', pet_id: @pet.id %>
+            <% end %>
+        <% end %>
+      <% end%>
     </div>
   </div>
   &nbsp;
