@@ -1,1 +1,3 @@
 $("#unfollow_button_<%=@follow_id%>").replaceWith("<%= j render 'follows/follow_button',pet_id: @pet_id %>");
+var tmp=parseInt($("span#follow_numbers").text())-1;
+$("span#follow_numbers").text(tmp);
