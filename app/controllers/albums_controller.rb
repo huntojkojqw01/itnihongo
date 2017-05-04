@@ -5,7 +5,11 @@ class AlbumsController < ApplicationController
 		@album=Album.new
 	end
 	def index
-		@list_album = Album.all
+		if user_signed_in?
+			@list_album=current_user.albums
+		else
+			@list_album = Album.all
+		end
 	end
 	def create
 		@album=Album.new(album_params)		
