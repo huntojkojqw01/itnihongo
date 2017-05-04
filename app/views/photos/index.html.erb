@@ -5,5 +5,5 @@
     <a href="<%=new_photo_path%>">Submit a photo</a>
   </div>
   &nbsp;
-  <%= render 'all_photo'%>
+  <%= render 'photos/all_photo', {photos: @photos}%>
 </div>

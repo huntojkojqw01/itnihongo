@@ -1,31 +1,6 @@
 <h1><%=t('album.title')%></h1>
-
 <div class="container">
-	<div class="row">
-	<% count = 0%>
-	<% @list_album.each do |album| %>
-        <div id = "container-photos" class = "col-md-4 col-lg-4" >
-        <% album.photos.each do |photo| %>
-              <img src= <%= photo.image%> >
-          <%end%>
-
-	    	<%if album.photos.count == 0%>
-              <%= link_to (cl_image_tag "http://imaging.nikon.com/lineup/dslr/df/img/sample/img_02.jpg"), album_path(id: album.id)%>
-	    	<% end %>
-			<div class="album-desc">
-            <%= link_to (album.name), album_path(id: album.id)%>
-      			<% if album.photos.count == 0 %>
-      				<span> <%= t('album.empty')%> </span>
-      			<%else%>
-      				<span> <%=album.photos.count.to_s +  t('album.count_photos') %></span>
-      			<% end %>
-      		</div>
-	    </div>
-	    <% count = count +1 %>
-	    <%if count%3 == 0 %>
-	    	</div>
-	    	<div class="row">
-	    <%end%>
-    <%end%>
-	</div>
+  <div class="row">
+    <%= render 'list_album', {list_album: @list_album} %>
+  </div>
 </div>

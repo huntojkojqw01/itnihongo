@@ -1,5 +1,5 @@
 <ul class="main-photos">
-  <% @photos.each do |photo| %>
+  <% photos.each do |photo| %>
       <li class="col-sm-4 col-md-4 col-lg-4">
         <div class="image-box">
           <img src="<%= photo.image %>" alt="Click here" class="main-img" link="<%=photo_path(photo)%>">
