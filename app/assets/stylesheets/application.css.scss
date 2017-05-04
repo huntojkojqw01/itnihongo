@@ -140,6 +140,7 @@ body {
   }
   ul.right-menu {
     list-style-type: none;
+    padding-left: 0px;
     li {
       display: inline;
       padding-left: 15px;
@@ -226,7 +227,6 @@ body {
 }
 .dropdown{
   cursor: pointer;
-  float: right;
   ul.menu-post-actions {
     padding-left: 10px;
     li {

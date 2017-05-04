@@ -5,7 +5,7 @@
             <div class="col-sm-3 col-md-3 col-lg-3 center-align">
               <label for="pet_avatar"><%=cl_image_tag @pet.avatar,size: "200x200", class: "pet-avatar" if @pet.avatar%></label><br>
               <h2><%=@pet.name%></h2>
-              Follow: <%=@pet.follow_numbers%>
+              <%= t('common.follows_text')+': '+@pet.follow_numbers.to_s%>
               <%= f.file_field :avatar,style: "visibility:hidden"%>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-6">
@@ -53,7 +53,7 @@
         <div class="col-sm-3 col-md-3 col-lg-3 center-align">
           <label ><%=cl_image_tag @pet.avatar,size: "200x200", class: "pet-avatar" if @pet.avatar%></label>
           <h2><%=@pet.name%></h2>
-          Follow: <%=@pet.follow_numbers%>
+          <%= t('common.follows_text')+': '+@pet.follow_numbers.to_s%>
         </div>
         <div class="col-sm-6 col-md-6 col-lg-6">
           <div class="row col-sm-12 col-md-12 col-lg-12">
@@ -100,7 +100,7 @@
     <div class="col-sm-3 col-md-3 col-lg-3 text-align-right">
       <br>
       <% if current_user.is_owner? @pet %>
-          <%=link_to t('showpet.delete'),@pet,method: :delete,data: {confirm: "Are you sua?"},class: 'btn btn-danger'%>
+          <%=link_to t('showpet.delete'),@pet,method: :delete,data: {confirm: "Are you sure?"},class: 'btn btn-danger'%>
       <% else %>
           <% if current_user.followed? @pet %>
               <%=render 'follows/unfollow_button', follow: Follow.where(user_id: current_user.id,pet_id: @pet.id).first %>
@@ -110,10 +110,11 @@
       <% end %>
     </div>
   </div>
+  &nbsp;
   <div class="row">
     <ul class="horizontal-menu nav nav-tabs">
-      <li class="active"><a data-toggle="tab" href="#show_photos"><%= @photos.count%> 写真</a></li>
-      <li><a data-toggle="tab" href="#show_albums">アルバム</a></li>
+      <li class="active"><a data-toggle="tab" href="#show_photos"><%= @photos.count.to_s+' '+t('user_page.image_text')%></a></li>
+      <li><a data-toggle="tab" href="#show_albums"><%= t('album.title')%></a></li>
     </ul>
   </div>
   <div class="row tab-content" id="content">
