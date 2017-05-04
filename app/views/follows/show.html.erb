@@ -1,2 +1,6 @@
-フォローペットリスト
-<%=render @follows %>
+<div class="container" id="followed-pets-page">
+  <div class="my-box-title">
+    <h3><b><%= t('user_page.follow_pets')%></b></h3>
+  </div>
+  <%=render @follows %>
+</div>
