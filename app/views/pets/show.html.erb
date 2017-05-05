@@ -125,7 +125,7 @@
     </div>
     <div id="show_albums" class="tab-pane fade">
       <%=link_to '',new_album_path %>
-      <%= render 'albums/list_album', {list_album: @pet.albums} %>
+      <%= render 'albums/list_album', list_album: @pet.albums, pet: @pet %>
     </div>
   </div>
 </div>
