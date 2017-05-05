@@ -1,7 +1,7 @@
 <div class="container detail-page">
   <div class="row">
     <div class="col-sm-8 col-md-8 col-lg-8">
-      <span class="caption"><%= @photo.caption %></span><br>
+      <span class="caption"><%= @photo.caption.to_s.empty?? t('common.no_caption'): @photo.caption %></span><br>
       <span class="author">of <%= link_to @photo.pet.name, @photo.pet %> by <%= link_to @photo.owner_last_name, @photo.user%></span>
       <% if current_user==@photo.user %>
       <div class="dropdown dropdown-post">
@@ -41,7 +41,7 @@
         <li class='photo'>
           <input class='radio' id='photo_<%=photo.id%>' name='works' type='radio'>
           <div class="relative">
-            <label for='photo_<%=photo.id%>'><%=photo.caption%></label>
+            <label for='photo_<%=photo.id%>'><%= photo.caption.to_s.empty?? t('common.no_caption'): photo.caption%></label>
             <span class='date'><%= photo.created_at.strftime("%b %d, %Y")%></span>
             <span class='circle'></span>
           </div>

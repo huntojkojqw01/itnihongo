@@ -123,3 +123,4 @@ vi:
       follow_action_text: "Theo dõi"
       unfollow_action_text: "Bỏ theo dõi"
       add_new_album_text: "Tạo mới bộ sưu tập"
+      no_caption: "[Không có tiêu đề]"
