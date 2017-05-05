@@ -140,6 +140,7 @@ body {
   }
   ul.right-menu {
     list-style-type: none;
+    padding-left: 0px;
     li {
       display: inline;
       padding-left: 15px;
@@ -226,7 +227,6 @@ body {
 }
 .dropdown{
   cursor: pointer;
-  float: right;
   ul.menu-post-actions {
     padding-left: 10px;
     li {
@@ -246,6 +246,22 @@ body {
 }
 
 .date-select {
-  width: 32%;
   display: inline-block;
+  width: 30%;
+}
+ul.horizontal-menu {
+  list-style-type: none;
+  padding-left: 0px;
+  li {
+    padding-left: 0px;
+    display: inline;
+  }
+}
+
+.ul-basic {
+  list-style-type: none;
+  padding-left: 0px;
+  li {
+    padding-left: 0px;
+  }
 }

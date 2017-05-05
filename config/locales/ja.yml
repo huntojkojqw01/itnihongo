@@ -63,6 +63,7 @@ ja:
     submit: "更新"
     follow: "Follow"
     unfollow: "Unfollow"
+    delete: "削除する"
   newphoto:
     title: "写真をアップロード"
     pet: "ペット"
@@ -118,3 +119,7 @@ ja:
       password: "パスワード"
       password_confirmation: "パスワード確認"
       current_password: "現在のパスワード"
+      follows_text: "フォロー"
+      follow_action_text: "フォローする"
+      unfollow_action_text: "アンフォロー"
+      add_new_album_text: "アルバムを作成"

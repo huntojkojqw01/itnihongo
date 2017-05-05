@@ -63,6 +63,7 @@ en:
     submit: "Update"
     follow: "Follow"
     unfollow: "Unfollow"
+    delete: "Delete this pet"
   newphoto:
     title: "Submit a photo"
     pet: "Pet"
@@ -104,3 +105,7 @@ en:
     password: "Password"
     password_confirmation: "Password Confirmation"
     current_password: "Current Password"
+    follows_text: "Follows"
+    follow_action_text: "Follow"
+    unfollow_action_text: "Unfollow"
+    add_new_album_text: "Add new album"
