@@ -124,3 +124,5 @@ vi:
       unfollow_action_text: "Bỏ theo dõi"
       add_new_album_text: "Tạo mới bộ sưu tập"
       no_caption: "[Không có tiêu đề]"
+      text_everyone_can_upload: "Bất kì cũng có thể đăng ảnh thú nuôi"
+      submit_photo: "Tải một ảnh lên"

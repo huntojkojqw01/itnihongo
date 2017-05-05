@@ -124,3 +124,5 @@ ja:
       unfollow_action_text: "アンフォロー"
       add_new_album_text: "アルバムを作成"
       no_caption: "[キャプショんありません]"
+      text_everyone_can_upload: "だれでもペットの写真をアップロードできる"
+      submit_photo: "写真をアップロードする"
