@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
 	before_action :authenticate_user!, except: [:index,:new,:show]
-	before_action :album_params, only: :create
+	before_action :album_params,:its_me!, only: :create
 	def new
 		@album=Album.new
 	end
@@ -41,5 +41,12 @@ class AlbumsController < ApplicationController
 	private
     def album_params
       params.require(:album).permit(:pet_id, :name)
+    end
+    def its_me!
+    	pet=Pet.find_by(id: album_params[:pet_id])
+    	if !pet || pet.user!=current_user
+    		flash[:danger]="You haven't permission to make album of this pet" 
+			redirect_to root_path
+		end   	
     end
 end

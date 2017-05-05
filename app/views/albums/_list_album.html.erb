@@ -27,4 +27,5 @@
     </li>
   <% end%>
 </ul>
-<%=render 'photos/new_album_modal'%>
+<% pet||=nil %>
+<%=render 'photos/new_album_modal', pet: pet%>

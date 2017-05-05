@@ -9,8 +9,9 @@ $(document).on 'turbolinks:load', ->
 				$("#photo_album_id").replaceWith $(data).find('#photo_album_id').clone()
 			dataType: "html"
 	$('#new_album').click ->
-		$('#new_album_modal input[name="petname"]').val($("#pet option:selected").text())
-		$('#new_album_modal #album_pet_id').val($("#pet").val())
+		if $("#pet option:selected").text()!=""
+			$('#new_album_modal input[name="petname"]').val($("#pet option:selected").text())
+			$('#new_album_modal #album_pet_id').val($("#pet").val())
 		$('#new_album_modal').modal()		
 	$("#photo_image").change ->		
 		$('img').attr('src', window.URL.createObjectURL(this.files[0]))
