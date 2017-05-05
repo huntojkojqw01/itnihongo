@@ -108,3 +108,13 @@ vi:
       image_text: "Ảnh"
       follow_pets: "Động vật đã theo dõi"
       create_pet: "Thêm mới động vật"
+  common:
+      first_name: "Họ"
+      last_name: "Tên"
+      gender: "Giới tính"
+      birthday: "Ngày sinh"
+      address: "Địa chỉ"
+      other_info: "Thông tin khác"
+      password: "Mật khẩu"
+      password_confirmation: "Xác thực lại mật khẩu"
+      current_password: "Mật khẩu hiện tại"

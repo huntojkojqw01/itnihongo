@@ -108,3 +108,13 @@ ja:
       image_text: "写真"
       follow_pets: "フォローしたペット"
       create_pet: "ペット登録"
+  common:
+      first_name: "名"
+      last_name: "姓"
+      gender: "性別"
+      birthday: "生年月日"
+      address: "アドレス"
+      other_info: "他の情報"
+      password: "パスワード"
+      password_confirmation: "パスワード確認"
+      current_password: "現在のパスワード"
