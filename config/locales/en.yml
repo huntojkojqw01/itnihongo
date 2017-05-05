@@ -109,3 +109,7 @@ en:
     follow_action_text: "Follow"
     unfollow_action_text: "Unfollow"
     add_new_album_text: "Add new album"
+    no_caption: "[No caption]"
+    text_everyone_can_upload: "Everyone can upload pet's photo"
+    submit_photo: "Submit a photo"
+

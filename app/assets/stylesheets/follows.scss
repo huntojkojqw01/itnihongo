@@ -1,3 +1,11 @@
 // Place all the styles related to the Follows controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#followed-pets-page {
+  padding-top: 50px;
+  .my-box-title {
+    padding: 1px 0px;
+    background-color: #b3b3ff;
+    margin-bottom: 20px;
+  }
+}

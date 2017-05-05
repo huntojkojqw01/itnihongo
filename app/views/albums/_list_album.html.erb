@@ -1,5 +1,7 @@
+<% count = 0%>
 <ul class="ul-basic list-album">
   <% if current_user == list_album[0].pet.user %>
+      <% count+=1%>
       <li class="col-sm-4 col-md-4 col-lg-4">
         <label id="new_album" class="btn-add-new-album center-align">
           <span class="glyphicon glyphicon-plus"></span>
@@ -8,7 +10,9 @@
       </li>
   <% end%>
   <% list_album.each do |album| %>
-    <li class="col-sm-4 col-md-4 col-lg-4" id="container-photos">
+    <% count+=1%>
+
+      <li class="col-sm-4 col-md-4 col-lg-4 container-photos <%= 'clear-float '+count.to_s if count%3 == 1%>">
       <% album.photos.each do |photo| %>
           <img src= <%= photo.image%> >
       <%end%>
