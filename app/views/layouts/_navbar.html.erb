@@ -14,7 +14,7 @@
           <li><%=link_to t('navbar.home'),root_path %></li>
           <li><a href="<%= new_photo_path%>"><%=t('navbar.new')%></a></li>
           <% if user_signed_in? %>
-            <a href=""><img src="<%=current_user.avatar%>" alt="" height="42" width="42"></a>
+            <a href="<%= user_path(current_user.id)%>"><img src="<%=current_user.avatar%>" alt="" height="42" width="42"></a>
             <li class="dropdown">
               <span class="dropdown-toggle" type="button" data-toggle="dropdown"><strong><%=current_user.first_name+' '+current_user.last_name||='No name'%></strong>
               <span class="caret"></span></span>

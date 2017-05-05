@@ -4,7 +4,6 @@
 
 #container-photos {
   position:relative;
-  padding-left: 4%;
 }
 #container-photos img {
   position:absolute;
@@ -280,6 +279,24 @@
           font-size: 20px;
         }
       }
+    }
+  }
+}
+
+.list-album {
+  .btn-add-new-album {
+    width: 300px;
+    height: 350px;
+    border: 1px dotted black;
+    cursor: pointer;
+    .glyphicon-plus {
+      margin-top: 100px;
+      font-size: 100px;
+      color: lightgray;
+    }
+    .text-add-new-album {
+      font-size: 20px;
+      font-weight: bold;
     }
   }
 }

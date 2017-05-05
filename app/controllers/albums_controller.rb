@@ -5,7 +5,13 @@ class AlbumsController < ApplicationController
 		@album=Album.new
 	end
 	def index
-		if user_signed_in?
+		if params[:user_id]
+			@user = User.find_by(id: params[:user_id])
+			@list_album = @user.albums;
+		elsif params[:pet_id]
+			@pet = Pet.find_by(id: params[:pet_id]);
+			@list_album = @pet.albums;
+		elsif user_signed_in?
 			@list_album=current_user.albums
 		else
 			@list_album = Album.all

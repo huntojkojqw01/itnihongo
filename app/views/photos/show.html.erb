@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-8 col-md-8 col-lg-8">
       <span class="caption"><%= @photo.caption %></span><br>
-      <span class="author">by <%= link_to @photo.owner_last_name, @photo.user%></span>
+      <span class="author">of <%= link_to @photo.pet.name, @photo.pet %> by <%= link_to @photo.owner_last_name, @photo.user%></span>
       <% if current_user==@photo.user %>
       <div class="dropdown dropdown-post">
         <span class="glyphicon glyphicon-chevron-down dropdown-toggle" data-toggle="dropdown"></span>
