@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   
   resources :users, only: :show
   resources :languages, only: :create
-  resources :albums, only: [:create,:new,:show, :index]
+  resources :albums, only: [:create,:new,:show, :index,:destroy]
   resources :follows, only: [:create,:destroy,:show]
   resources :comments, only: [:create,:update,:destroy]
   resources :likes, only: [:create,:destroy]

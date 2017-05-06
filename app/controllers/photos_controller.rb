@@ -1,6 +1,7 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index,:show]
+  before_action :its_me!, only: :create
   # GET /photos
   # GET /photos.json
   def index    
@@ -56,7 +57,7 @@ class PhotosController < ApplicationController
     respond_to do |format|
       if @photo.save
         @photo.pet.users.each do |user|
-          Notification.create(recipient: user, user: @photo.user, action: "uploaded", notifiable: @photo.pet)
+          Notification.create(recipient: user, user: @photo.user, action: "uploaded", notifiable: @photo)
         end        
         format.html { redirect_to @photo, notice: 'Photo was successfully created.' }
         format.json { render :show, status: :created, location: @photo }
@@ -102,5 +103,12 @@ class PhotosController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def photo_params
       params.require(:photo).permit(:image, :album_id, :caption)
+    end
+    def its_me!
+      album=Album.find_by(id: photo_params[:album_id])
+      if !album || album.user!=current_user
+        flash[:danger]="You haven't permission to upload photo of this album" 
+        redirect_to root_path
+      end     
     end
 end

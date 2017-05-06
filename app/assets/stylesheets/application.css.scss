@@ -27,42 +27,53 @@ body {
 
 .header {
   height: 70px;
-  padding: 15px 15px;
-  .brand {
-    a {
-      line-height: 40px;
-      font-size: 20px;
-      font-weight: bold;
+  padding: 15px 0px;
+  .left-header {
+    padding-left: 0px;
+    .brand {
+      padding-left: 0px !important;
+      padding-right: 0px !important;
+      a {
+        line-height: 40px;
+        font-size: 20px;
+        font-weight: bold;
+      }
+    }
+    .search-box {
+      position: relative;
+      float: left;
+      .search-input-box{
+        height: 40px;
+        padding-left: 40px;
+        border-radius: 20px;
+      }
+      .glyphicon {
+        position: absolute;
+        font-size: 20px;
+        left: 20px;
+        width: 20px;
+        text-align: center;
+        padding: 10px 0;
+        top: 1px
+      }
     }
   }
-  .search-box {
-    position: relative;
-    float: left;
-    .search-input-box{
-      height: 40px;
-      padding-left: 40px;
-      border-radius: 20px;
-    }
-    .glyphicon {
-      position: absolute;
-      font-size: 20px;
-      left: 20px;
-      width: 20px;
-      text-align: center;
-      padding: 10px 0;
-      top: 1px
-    }
-  }
-  .btn-submit-photo, .btn-login, .btn-signup {
-    padding: 10px 20px;
-    height: 40px;
-  }
-  ul.right-menu {
-    list-style-type: none;
-    li {
-      display: inline;
-      padding-left: 15px;
-      padding-right: 15px;
+
+  .right-header{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    ul.right-menu {
+      list-style-type: none;
+      padding-left: 0px;
+      li {
+        display: inline;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+      .btn-submit-photo, .btn-login, .btn-signup {
+        padding: 10px 20px;
+        height: 40px;
+      }
     }
   }
 }
@@ -106,47 +117,6 @@ body {
   clear: both;
 }
 
-.header {
-  height: 70px;
-  padding: 15px 15px;
-  .brand {
-    a {
-      line-height: 40px;
-      font-size: 20px;
-      font-weight: bold;
-    }
-  }
-  .search-box {
-    position: relative;
-    float: left;
-    .search-input-box{
-      height: 40px;
-      padding-left: 40px;
-      border-radius: 20px;
-    }
-    .glyphicon {
-      position: absolute;
-      font-size: 20px;
-      left: 20px;
-      width: 20px;
-      text-align: center;
-      padding: 10px 0;
-      top: 1px
-    }
-  }
-  .btn-submit-photo, .btn-login, .btn-signup {
-    padding: 10px 20px;
-    height: 40px;
-  }
-  ul.right-menu {
-    list-style-type: none;
-    li {
-      display: inline;
-      padding-left: 15px;
-      padding-right: 15px;
-    }
-  }
-}
 .page-container {
   ul.main-photos {
     list-style-type: none;
@@ -226,7 +196,6 @@ body {
 }
 .dropdown{
   cursor: pointer;
-  float: right;
   ul.menu-post-actions {
     padding-left: 10px;
     li {
@@ -242,5 +211,26 @@ body {
         }
       }
     }
+  }
+}
+
+.date-select {
+  display: inline-block;
+  width: 30%;
+}
+ul.horizontal-menu {
+  list-style-type: none;
+  padding-left: 0px;
+  li {
+    padding-left: 0px;
+    display: inline;
+  }
+}
+
+.ul-basic {
+  list-style-type: none;
+  padding-left: 0px;
+  li {
+    padding-left: 0px;
   }
 }

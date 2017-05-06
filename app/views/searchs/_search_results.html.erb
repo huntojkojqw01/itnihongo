@@ -1,42 +1,55 @@
+<% if @results.count == 0
+%>
+    <div class="cd-container row">
+      <div class="search-title col-md-4 col-lg-4">No results</div>
+    </div>
+<%else%>
 <div class="cd-container row">
-  <span>Pet</span>
+  <div class="search-title">Search results</div>
   <ul class="list-item-search">
     <% @results.each do |x| %>
-      <%if x.searchable_type == "Pet"
-      %>
-      <li class="col-md-3 item">
-        <div class="item-img">
-          <a href="#">
-            <img src="http://imaging.nikon.com/lineup/dslr/df/img/sample/img_02.jpg">
-          </a>
-        </div>
-        <div class="item-info">
-          <%= link_to x.searchable.name, x.searchable %>
-          <br>
-          <span class="date">
-        <%= x.created_at%>
-      </span>
-        </div>
-      </li>
-            <%end%>
+      <%if x.searchable_type == "Pet" %>
+        <li class="col-md-3 col-lg-3 item">
+          <div class="item-img">
+            <%= link_to (cl_image_tag x.searchable.avatar), x.searchable %>
+          </div>
+          <div class="item-info">
+            <%= link_to "Pet: " + x.searchable.name, x.searchable %>
+            <br>
+            <span class="date">
+          <%= x.created_at%>
+        </span>
+          </div>
+        </li>
+      <%end%>
     <%end%>
-  </ul>
-</div>
 
-<div class="cd-container row">
-  <span>Album</span>
-  <ul class="list-item-search">
     <% @results.each do |x| %>
-        <%if x.searchable_type == "Album"
-        %>
-            <li class="col-md-3 item">
+        <%if x.searchable_type == "Album" %>
+            <li class="col-md-3 col-lg-3 item">
               <div class="item-img">
-                <a href="#">
-                  <img src="http://imaging.nikon.com/lineup/dslr/df/img/sample/img_02.jpg">
-                </a>
+                <%= link_to (cl_image_tag "http://imaging.nikon.com/lineup/dslr/df/img/sample/img_02.jpg",size: "40x40"), x.searchable %>
               </div>
               <div class="item-info">
-                <%= link_to x.searchable.name, x.searchable %>
+                <%= link_to "Album: " + x.searchable.name, x.searchable %>
+                <br>
+                <span class="date">
+                  <%= x.created_at%>
+                </span>
+              </div>
+            </li>
+        <%end%>
+    <%end%>
+
+    <% @results.each do |x| %>
+        <%if x.searchable_type == "Comment"
+        %>
+            <li class="col-md-3 col-lg-3 item">
+              <div class="item-img">
+                <%= link_to (cl_image_tag x.searchable.photo.image), x.searchable.photo %>
+              </div>
+              <div class="item-info">
+                <%= link_to "Comment: " + x.content, x.searchable.photo %>
                 <br>
                 <span class="date">
         <%= x.created_at%>
@@ -45,37 +58,25 @@
             </li>
         <%end%>
     <%end%>
+
+    <% @results.each do |x| %>
+        <%if x.searchable_type == "Photo"
+        %>
+            <li class="col-md-3 col-lg-3 item">
+              <div class="item-img">
+                <%= link_to (cl_image_tag  x.searchable.image), x.searchable %>
+              </div>
+              <div class="item-info">
+                <%= link_to "Photo: " + x.content, x.searchable %>
+                <br>
+                <span class="date">
+        <%= x.created_at%>
+      </span>
+              </div>
+            </li>
+        <%end%>
+    <%end%>
+
   </ul>
 </div>
-<% @results.each do |x| %>
-	<% case x.searchable_type %>
-	<% when "Album","Pet" %>
-		<%=x.searchable_type%>: <%= link_to x.searchable.name, x.searchable %><br>
-    <div class="wrapper">
-        <div class="card">
-          <div class="result">
-            <div class="img"></div>
-            <div class="info">
-              <span class="title"><%=link_to x.searchable.name, x.searchable%></span>
-              <span class="address"><%=link_to x.searchable_id%></span>
-              <span class="eta"><%= x.created_at%></span>
-            </div>
-            <div class="fab"></div>
-          </div>
-        </div>
-  </div>
-	<% when "Comment" %>
-		<%=x.searchable_type%> for: <%= link_to (cl_image_tag x.searchable.photo.image,size: "40x40"), x.searchable.photo %><br>
-	<% when "Photo" %>
-		<%=x.searchable_type%>: <%= link_to x.searchable.caption, x.searchable %><br>
-	<% when "Tag" %>
-		<%=x.searchable_type%>: <%= link_to x.searchable.name, x.searchable %><br>
-	<% end %>
-<% end %>
-<script type="text/javascript">
-  $('.result').on('click', function() {
-  $(this).toggleClass('selected');
-  $('.card').toggleClass('show');
-});
-</script>
-
+<%end%>

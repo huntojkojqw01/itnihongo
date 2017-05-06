@@ -1,32 +1,37 @@
 // Place all the styles related to the Albums controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#row {
-  height: 400px;
-}
 .title-album {
   text-align: center;
   padding-bottom: 5%;
   text-shadow: 2px 2px 8px #FF0000;
 }
-#container-photos {
-  position:relative;
-  padding-left: 4%;
+ul.list-album {
+  li {
+    margin-bottom: 20px !important;
+  }
 }
-#container-photos img {
+.container-photos {
+  position:relative;
+  height: 350px;
+}
+.container-photos img {
   position:absolute;
-  width: 300px;
+  width: 80%;
   height: 300px;
   border: 1px solid rgba(0, 0, 0, .1);
   cursor: pointer;
+  top: 0px;
+  left: 0px;
 }
 .album-desc {
-  padding: 10px 15px;
   position: absolute;
-  width: 300px;
+  padding: 10px 15px;
+  width: 80%;
   height: 50px;
   background-color: #ffffff;
-  margin-top: 300px;
+  top: 300px;
+  left: 0px;
   border: 1px solid #e9ebee;
 }
 .album-desc span {
@@ -167,7 +172,7 @@
   }
 }
 
-#container-photos:hover img {
+.container-photos:hover img {
   -webkit-animation-name: imgFade;
   -webkit-animation-timing-function: ease-in-out;
   -webkit-animation-iteration-count: infinite;
@@ -188,25 +193,25 @@
   animation-iteration-count: infinite;
   animation-duration: 8s;
 }
-#container-photos:hover img:nth-of-type(1) {
+.container-photos:hover img:nth-of-type(1) {
   -webkit-animation-delay: 6s;
   -moz-animation-delay: 6s;
   -o-animation-delay: 6s;
   animation-delay: 6s;
 }
-#container-photos:hover img:nth-of-type(2) {
+.container-photos:hover img:nth-of-type(2) {
   -webkit-animation-delay: 4s;
   -moz-animation-delay: 4s;
   -o-animation-delay: 4s;
   animation-delay: 4s;
 }
-#container-photos:hover img:nth-of-type(3) {
+.container-photos:hover img:nth-of-type(3) {
   -webkit-animation-delay: 2s;
   -moz-animation-delay: 2s;
   -o-animation-delay: 2s;
   animation-delay: 2s;
 }
-#container-photos img:nth-of-type(4) {
+.container-photos img:nth-of-type(4) {
   -webkit-animation-delay: 0;
   -moz-animation-delay: 0;
   -o-animation-delay: 0;
@@ -287,6 +292,24 @@
           font-size: 20px;
         }
       }
+    }
+  }
+}
+
+.list-album {
+  .btn-add-new-album {
+    width: 80%;
+    height: 350px;
+    border: 1px dotted black;
+    cursor: pointer;
+    .glyphicon-plus {
+      margin-top: 100px;
+      font-size: 100px;
+      color: lightgray;
+    }
+    .text-add-new-album {
+      font-size: 20px;
+      font-weight: bold;
     }
   }
 }

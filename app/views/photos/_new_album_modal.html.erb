@@ -10,8 +10,13 @@
           <div id="errors"></div>
           <div class="form-group">
             <%= label_tag t('newphoto.petname')%>
-            <input type="text" name="petname" value="" readonly><br>
-            <%= f.hidden_field :pet_id%>
+            <% pet||=nil%>
+            <% if pet %>
+              <input type="text" name="petname" value="<%=pet.name%>" readonly><br>
+              <%= f.hidden_field :pet_id,value: pet.id%>
+            <% elsif user_signed_in? %>
+              <%= f.collection_select :pet_id,current_user.pets,:id,:name %>
+            <% end %>
           </div>
           <div class="form-group">
             <%= label_tag t('newphoto.albumname')%>
@@ -28,3 +33,11 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+  $('form#new_album').submit(function () {
+      setTimeout(function(){
+          window.location.reload();
+      }, 500);
+  });
+</script>
