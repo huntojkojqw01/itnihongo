@@ -37,14 +37,15 @@
               <ul id="notifications" class="dropdown-menu"></ul>
             </li>
           <% end %>
-          <li id="language" class="dropdown">
-            <span class="dropdown-toggle" type="button" data-toggle="dropdown"><strong><%=t('navbar.language')%></strong>
-              <span class="caret"></span></span>
-              <ul class="dropdown-menu">
-                <li value="en"><a><%=t('navbar.en')%></a></li>
-                <li value="ja"><a><%=t('navbar.ja')%></a></li>
-                <li value="vi"><a><%=t('navbar.vi')%></a></li>
-              </ul>
+          <li id="language" class="dropdown" locale="<%=session[:locale]%>">
+            <span class="dropdown-toggle" type="button" data-toggle="dropdown">
+              <span class="caret"></span>
+            </span>
+            <ul class="dropdown-menu">
+              <li value="en"><a><%=cl_image_tag("en_cv0qbq.png", size:"50x30")%></a></li>
+              <li value="ja"><a><%=cl_image_tag("jp_bo0z77.jpg",size:"50x30")%></a></li>
+              <li value="vi"><a><%=cl_image_tag("vn_kkraxl.jpg",size:"50x30")%></a></li>                
+            </ul>
           </li>
         </ul>
       </div>
