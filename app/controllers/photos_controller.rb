@@ -8,6 +8,11 @@ class PhotosController < ApplicationController
     @photos = Photo.left_outer_joins(:likes,:comments).group(:id)
     .select("photos.*","count(distinct likes.id) as like_num","count(distinct comments.id) as comment_num")
     .order("like_num desc,comment_num desc")
+    .paginate page: params[:page], per_page: 9
+    respond_to do |format|
+      format.html
+      format.js
+    end    
   end
 
   # GET /photos/1
