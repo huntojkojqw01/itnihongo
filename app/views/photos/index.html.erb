@@ -1,9 +1,9 @@
 <div class="container">	
   <div class="row center-align">  	  
     <h1><b>可愛いペット</b></h1>
-    <h3>Everyone can upload pet's photo </h3>
-    <a href="<%=new_photo_path%>">Submit a photo</a>
+    <h3><%= t('common.text_everyone_can_upload')%></h3>
+    <a href="<%=new_photo_path%>"><%= t('common.submit_photo')%></a>
   </div>
   &nbsp;
-  <%= render 'all_photo'%>
+  <%= render 'photos/all_photo', {photos: @photos}%>
 </div>

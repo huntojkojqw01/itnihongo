@@ -1,8 +1,13 @@
 <div class="container">
   <div class="row center-align">
-    <h1><b><%= @album.name%></b></h1>
+    <h1>
+      <b><%= @album.name%></b>
+      <%=link_to '',@album,method: :delete,data: {confirm: "Are you sure?"},remote: true,class: 'btn btn-danger glyphicon glyphicon-trash' if user_signed_in? && current_user==@album.user %>
+    </h1>
     <span> Pet name: <%=link_to @album.pet.name,@album.pet %></span>
-    <a href="<%=new_photo_path(album_id: @album.id)%>" class="button" style="vertical-align:middle"><span>New photo </span></a>
+    <% if user_signed_in? && current_user==@album.user %>
+      <a href="<%=new_photo_path(album_id: @album.id)%>" class="button" style="vertical-align:middle"><span>New photo </span></a>
+    <% end %>
   </div>
     &nbsp;
   <ul class="main-photos">
