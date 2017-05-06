@@ -1,6 +1,11 @@
 // Place all the styles related to the Albums controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.title-album {
+  text-align: center;
+  padding-bottom: 5%;
+  text-shadow: 2px 2px 8px #FF0000;
+}
 ul.list-album {
   li {
     margin-bottom: 20px !important;
