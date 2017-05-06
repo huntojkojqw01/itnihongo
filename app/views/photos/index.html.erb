@@ -5,5 +5,8 @@
     <a href="<%=new_photo_path%>"><%= t('common.submit_photo')%></a>
   </div>
   &nbsp;
-  <%= render 'photos/all_photo', {photos: @photos}%>
+  <ul class="main-photos hero">  
+      <%=render @photos %>  
+  </ul>
+  <%= will_paginate %>
 </div>
