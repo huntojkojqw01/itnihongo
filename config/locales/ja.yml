@@ -21,6 +21,8 @@
 
 ja:
   hello: "こんにちは"
+  notfound: "deta ga arimasen"
+  notpermit: "mirukoto ga dekimasen"
   navbar:
     home: "ホーム"
     new: "新写真"
@@ -62,17 +64,17 @@ ja:
     follow: "Follow"
     unfollow: "Unfollow"
   newphoto:
-    title: "New photo"
-    pet: "Pet"
-    album: "Album"
-    image: "Image"
-    select: "Choose file"
-    caption: "Caption"
-    submit: "Create"
-    newalbum: "Create new album"
-    petname: "Pet name"
-    albumname: "Album name"    
-    close: "Close"
+    title: "写真をアップロード"
+    pet: "ペット"
+    album: "アルバム"
+    image: "写真"
+    select: "写真を選択"
+    caption: "キャプショんン"
+    submit: "アップロード"
+    newalbum: "新しいアルバム追加"
+    petname: "ペット名"
+    albumname: "アルバム名"
+    close: "クローズ"
   photodetail:
     view_album: "アルバムへ"
     like_number: "いいね"

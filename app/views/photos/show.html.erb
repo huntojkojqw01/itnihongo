@@ -3,22 +3,22 @@
     <div class="col-sm-8 col-md-8 col-lg-8">
       <span class="caption"><%= @photo.caption %></span><br>
       <span class="author">by <%= link_to @photo.owner_last_name, @photo.user%></span>
+      <% if current_user==@photo.user %>
       <div class="dropdown dropdown-post">
         <span class="glyphicon glyphicon-chevron-down dropdown-toggle" data-toggle="dropdown"></span>
         <ul class="dropdown-menu menu-post-actions" role="menu">
-          <li>
-            <% if current_user==@photo.user then%>
+          <li>            
             <i class="fa fa-times" aria-hidden="true"></i>
-            <%= link_to t('photodetail.delete_post_text'),@photo,method: :delete,data:{confirm: "Are you sure?"}%>
-            <% end%>
+            <%= link_to t('photodetail.delete_post_text'),@photo,method: :delete,data:{confirm: "Are you sure?"}%>            
           </li>
         </ul>
       </div>
-      <%= image_tag @photo.image,size: "200x200",class:"main-image"%><br>
+      <% end%>      
+      <%= cl_image_tag @photo.image,size: "200x200",class:"main-image"%><br>
       <% if @like %>
           <%=link_to "",@like,method: :delete,remote: true,class: "glyphicon glyphicon-thumbs-down",id: "dislike"%>
       <% else %>
-          <%=link_to "",likes_path(user_id: current_user.id,photo_id: @photo.id),method: :post,remote: true,class: "glyphicon glyphicon-thumbs-up",id: "like"%>
+          <%=link_to "",likes_path(user_id: current_user.id,photo_id: @photo.id),method: :post,remote: true,class: "glyphicon glyphicon-thumbs-up",id: "like" if user_signed_in? %>
       <% end %>
       <span id="like_numbers"><%= @photo.like_numbers.to_s%></span><%= ' '+t('photodetail.like_number')%>
       <span id="comment_numbers"><%= @photo.comment_numbers.to_s%></span><%= ' '+t('photodetail.comment_number')%><br>
@@ -28,7 +28,7 @@
           <%=f.hidden_field :photo_id,value: @photo.id %><br>
           <%=f.text_area :content, class: "form-control", cols: 5, placeholder: t('photodetail.comment_textarea')%><br>
           <%=f.submit t('photodetail.comment_button'), class: "btn btn-primary btn-comment" %>
-      <% end %>
+      <% end if user_signed_in?%>
       <br><br><br>
       <div id="comment_area">
         <%=render @comments%>
@@ -46,7 +46,7 @@
             <span class='circle'></span>
           </div>
           <div class='content'>
-            <%=link_to (image_tag photo.image,size: "40x40"),photo %><br>
+            <%=link_to (cl_image_tag photo.image,size: "40x40"),photo %><br>
           </div>
         </li>
         <% end %>

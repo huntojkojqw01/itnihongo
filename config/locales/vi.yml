@@ -21,6 +21,8 @@
 
 vi:
   hello: "Xin chào"
+  notfound: "Không tìm thấy dữ liệu"
+  notpermit: "Bạn không thể xem trang đó"
   navbar:
     home: "Trang chủ"
     new: "Ảnh mới"
@@ -62,17 +64,17 @@ vi:
     follow: "Follow"
     unfollow: "Unfollow"
   newphoto:
-    title: "New photo"
-    pet: "Pet"
+    title: "Thêm ảnh mới"
+    pet: "Động vật"
     album: "Album"
-    image: "Image"
-    select: "Choose file"
-    caption: "Caption"
-    submit: "Create"
-    newalbum: "Create new album"
-    petname: "Pet name"
-    albumname: "Album name"    
-    close: "Close"
+    image: "Ảnh"
+    select: "Chọn ảnh"
+    caption: "Tiêu đề"
+    submit: "Đăng ảnh"
+    newalbum: "Tạo mới album"
+    petname: "Tên động vật"
+    albumname: "Tên Album"
+    close: "Đóng"
   photodetail:
     view_album: "Đi tới album "
     like_number: "Thích"

@@ -1,8 +1,8 @@
 class PetsController < ApplicationController
 	skip_before_action :verify_authenticity_token
-	before_action :authenticate_user!
+	before_action :authenticate_user!, except: :show
 	def new
-		@pet=Pet.new		
+		@pet=Pet.new(:birthday => Date.today)		
 	end
 	def create
 		@pet=Pet.new(pet_params)
@@ -17,9 +17,13 @@ class PetsController < ApplicationController
 	end
 	def show
 		@pet=Pet.find_by(id: params[:id])
-		@photos=@pet.photos
-		@albums=@pet.albums
-		redirect_to root_path unless @pet
+		if @pet
+			@photos=@pet.photos
+			@albums=@pet.albums
+		else
+			flash[:danger]=t 'notfound'
+			redirect_to root_path
+		end
 	end
 	def update
 		@pet=Pet.find_by(id: params[:id])

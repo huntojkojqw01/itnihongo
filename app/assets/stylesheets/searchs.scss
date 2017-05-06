@@ -1,0 +1,194 @@
+// Place all the styles related to the Searchs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.cd-container {
+  padding: 0 35px 0 5px ;
+}
+.item {
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+  float: left;
+  padding-bottom: 2%;
+}
+.item-img {
+  max-width: 100%;
+}
+.item-img a img {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+.item-img > a {
+  overflow: hidden;
+  background-color: #4CAF50;
+}
+.item-info {
+  padding: 3% 5% 15%;
+  height: 40px;
+  background-color: #111433;
+  border-radius: 0 0 .25em .25em;
+}
+.item-info a{
+  width: 100%;
+}
+.item-info a:visited {
+  color: white;
+  font-size: large;
+}
+.item-info span {
+  color: white;
+  opacity: .6;
+  font-size: 13px;
+  font-style: italic;
+  font-family: "Merriweather", georgia, serif;
+}
+
+.card {
+  width:400px;
+  height:300px;
+  border-radius:2px;
+  background-color:white;
+  margin:16px;
+  border-radius:0px 5px 10px rgba(0,0,0,0.25);
+  display:flex;
+  flex-direction:column;
+}
+
+.result {
+  height:100px;
+  box-sizing:border-box;
+  cursor:pointer;
+  transition:all 0.5s ease;
+  overflow:hidden;
+  display:flex;
+  position:relative;
+}
+
+.result:not(:last-child) {
+  border-bottom:1px solid #ccc;
+}
+
+.card.show .result:not(.selected) {
+  height:0;
+  border:none;
+}
+
+.card.show .result.selected {
+  height:300px;
+  flex-direction:column;
+}
+
+.img {
+  width:100px;
+  height:100px;
+  background-position:center;
+  background-size:cover;
+  background-color:#eee;
+  transition:width 0.5s ease;
+}
+
+#one .img {
+  background-image:url('http://blogs-images.forbes.com/hughmcintyre/files/2015/02/Starbucks.jpg');
+}
+
+#two .img {
+  background-image: url('http://assets.inhabitat.com/wp-content/blogs.dir/1/files/2013/12/starbucks-canal-street-NOLA-store-6.jpg');
+}
+
+#three .img {
+  background-image: url('http://wiki.ubc.ca/images/5/5c/Starbucks-store.jpg');
+}
+
+.result.selected .img {
+  width:100%;
+}
+
+.info {
+  flex:1;
+  padding:16px;
+  color:#333;
+  overflow:hidden;
+  white-space:nowrap;
+}
+
+.title {
+  display:block;
+  font-size:2rem;
+  color:#333;
+  margin-bottom:8px;
+}
+
+.result.selected .address:after {
+  content:', New York, NY, 45678'; 
+}
+
+.fab {
+  width:72px;
+  height:72px;
+  background-color:#4CAF50;
+  border-radius:100%;
+  background-image:url('https://raw.githubusercontent.com/google/material-design-icons/master/maps/1x_web/ic_directions_car_white_24dp.png');
+  background-repeat:no-repeat;
+  background-position:center;
+  box-shadow:0 2px 5px rgba(0,0,0,0.25);
+  transform:scale(0);
+  transform-origin:center;
+  position:absolute;
+  right:16px;
+  z-index:2;
+  top:56px;
+}
+
+.result.selected .fab {
+  transition:transform 0.5s ease;
+  transition-delay:0.5s;
+  transform:scale(1);
+}
+
+.result.selected .address {
+  margin-bottom:8px;
+  margin-right:0;
+  display:block;
+}
+
+.address {
+  margin-right:16px;
+  display:inline-flex;
+  font-weight:500;
+}
+
+.address:before {
+  content:url('https://raw.githubusercontent.com/google/material-design-icons/master/maps/1x_web/ic_directions_car_grey600_18dp.png');
+  margin-right:8px;
+}
+
+.eta {
+  display:inline-flex;
+  font-weight:500;
+}
+
+.eta:before {
+  content:url('https://raw.githubusercontent.com/google/material-design-icons/master/maps/1x_web/ic_place_grey600_18dp.png');
+  margin-right: 8px;
+}
+
+.field {
+  width:400px;
+  background-color:white;
+  margin:16px;
+  padding:8px;
+  box-sizing:border-box;
+  border-radius:2px;
+  box-shadow:0px 2px 5px rgba(0,0,0,0.25);
+}
+
+.field input {
+  width:100%;
+  padding:0;
+  border:none;
+  font-family:inherit;
+  font-size:14pt;
+  font-weight:400;
+  outline:none;
+}

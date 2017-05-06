@@ -10,12 +10,8 @@ $(document).on 'turbolinks:load', ->
 			dataType: "html"
 	$('#new_album').click ->
 		$('#new_album_modal input[name="petname"]').val($("#pet option:selected").text())
-		$('#new_album_modal #album_pet_id').val($("#pet").val())				
-		$('#new_album_modal').modal()	
-	$("#new_album_modal").on("ajax:success", (e, data, status, xhr) ->		
-	    $("#new_album_modal").modal('hide')	        
-	).on "ajax:error", (e, xhr, status, error) ->
-	    alert("fail")
+		$('#new_album_modal #album_pet_id').val($("#pet").val())
+		$('#new_album_modal').modal()		
 	$("#photo_image").change ->		
 		$('img').attr('src', window.URL.createObjectURL(this.files[0]))
 	$("img.main-img").click ->

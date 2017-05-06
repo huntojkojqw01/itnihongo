@@ -15,7 +15,8 @@
             <%= alert=="alert"? "alert-danger":(
       alert=="notice"? "alert-info": "") %>"><%= message %></div>
     <% end %>
-    <div class="page-container">
+    <div class="page-container">      
+      <div id="search_results"></div>
       <%= yield %>
     </div>
   </body>

@@ -20,7 +20,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"  
+  hello: "Hello world"
+  notfound: "Not found"
+  notpermit: "You have not permission to view that page"  
   navbar:
     home: "Home"
     new: "New photo"
@@ -62,7 +64,7 @@ en:
     follow: "Follow"
     unfollow: "Unfollow"
   newphoto:
-    title: "New photo"
+    title: "Submit a photo"
     pet: "Pet"
     album: "Album"
     image: "Image"

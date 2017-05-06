@@ -1,7 +1,7 @@
 <h1 class="title-album"><%=t('album.title')%></h1>
 
 <div class="container">
-	<div class="row">
+	<div id="row" class="row">
 	<% count = 0%>
 	<% @list_album.each do |album| %>
         <div id = "container-photos" class = "col-md-4 col-lg-4" >
@@ -10,7 +10,7 @@
           <%end%>
 
 	    	<%if album.photos.count == 0%>
-              <%= link_to (image_tag "http://imaging.nikon.com/lineup/dslr/df/img/sample/img_02.jpg"), album_path(id: album.id)%>
+              <%= link_to (cl_image_tag "http://imaging.nikon.com/lineup/dslr/df/img/sample/img_02.jpg"), album_path(id: album.id)%>
 	    	<% end %>
 			<div class="album-desc">
             <%= link_to (album.name), album_path(id: album.id)%>
@@ -24,7 +24,7 @@
 	    <% count = count +1 %>
 	    <%if count%3 == 0 %>
 	    	</div>
-	    	<div class="row">
+	    	<div class="row" id="row">
 	    <%end%>
     <%end%>
 	</div>

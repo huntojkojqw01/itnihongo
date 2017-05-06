@@ -1,13 +1,19 @@
 class FollowsController < ApplicationController
 	before_action :authenticate_user!
 	def show
-		@follows=Follow.where(user_id: params[:id])
+		if current_user.id!=params[:id].to_i
+			flash[:danger]=t 'notpermit'
+			redirect_to root_path
+		else
+			@follows=Follow.where(user_id: params[:id])
+		end
 	end	
 	def create
 		@follow=Follow.new(user_id: current_user.id,pet_id: follow_params[:pet_id])
 		respond_to do |format|
-			if @follow.save							
-				format.js
+			if @follow.save
+				Notification.create(recipient: @follow.pet.user, user: current_user, action: "followed", notifiable: @follow.pet)
+		        format.js
 			else				     	
 	        	format.json { render json: @follow.errors, status: :unprocessable_entity}
 			end

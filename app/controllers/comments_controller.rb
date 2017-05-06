@@ -3,7 +3,10 @@ class CommentsController < ApplicationController
 	def create
 		@comment=Comment.new(comment_params)
 		respond_to do |format|
-			if @comment.save				
+			if @comment.save
+				if current_user!=@comment.photo.user
+					Notification.create(recipient: @comment.photo.user, user: @comment.user, action: "commented", notifiable: @comment.photo)								
+				end
 				format.js 
 			else				
 				format.json {render json: @comment.errors, status: :unprocessable_entity}

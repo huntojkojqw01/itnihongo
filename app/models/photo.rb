@@ -1,4 +1,7 @@
 class Photo < ApplicationRecord
+  # ["id", "image", "album_id", "caption", "created_at", "updated_at"]
+  include PgSearch
+  multisearchable :against => :caption
   mount_uploader :image, PhotoUploader
   belongs_to :album 
   has_many :likes, dependent: :destroy
@@ -11,6 +14,7 @@ class Photo < ApplicationRecord
   delegate :last_name , :to => "album.pet.user" ,:prefix=>"owner"
   delegate :avatar, :to => "album.pet.user", :prefix=>"owner"
   validates :image, presence: true
+  validates :album, presence: true
   def comment_numbers
   	comments.count
   end
