@@ -1,3 +1,29 @@
 // Place all the styles related to the notifications controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#notifications li {
+  display: block;
+}
+.notication-item {
+  display: block;
+  padding: 6px 30px 5px 20px;
+  background-color: #edf2fa;
+  border-bottom: 1px solid #dddfe2;
+}
+.notication-item:hover {
+  background-color: #e4e9f2;
+}
+.content-notication {
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.content-notication > a {
+  text-decoration: none!important;
+  font-family: inherit;
+  color: #1d2129;
+}
+.content-notication > a:hover {
+  color: #1d2129;
+}

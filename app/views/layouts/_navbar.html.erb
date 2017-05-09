@@ -34,7 +34,8 @@
           <% if user_signed_in? %>
             <li class="dropdown">
               <span class="dropdown-toggle glyphicon glyphicon-bell" type="button" data-toggle="dropdown"></span>
-              <ul id="notifications" class="dropdown-menu"></ul>
+              <ul id="notifications" class="dropdown-menu">
+              </ul>
             </li>
           <% end %>
           <li id="language" class="dropdown" locale="<%=session[:locale]%>">

@@ -236,3 +236,15 @@ ul.horizontal-menu {
     padding-left: 0px;
   }
 }
+#notifications {
+  background-color: #ffffff;
+  width: 200px;
+  left: -150px!important;
+  height: auto;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+  border-radius: 0 0 2px 2px;
+  border: 1px solid rgba(100, 100, 100, .4);
+}
+.notication-title {
+  background-color: yellow;
+}
