@@ -15,8 +15,8 @@ $(document).on 'turbolinks:load', ->
 		$('#new_album_modal').modal()		
 	$("#photo_image").change ->		
 		$('img#photo-upload').attr('src', window.URL.createObjectURL(this.files[0]))
-	$("img.main-img").click ->
-		window.location=$(this).attr("link")
+	# $("img.main-img").click ->
+	# 	window.location=$(this).attr("link")
 	$(window).on 'scroll', ->
 		more_posts_url = $('.pagination .next_page a').attr('href')
 		if more_posts_url and $(window).scrollTop() > $(document).height() - $(window).height() - 100
