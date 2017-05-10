@@ -14,7 +14,7 @@ $(document).on 'turbolinks:load', ->
 			$('#new_album_modal #album_pet_id').val($("#pet").val())
 		$('#new_album_modal').modal()		
 	$("#photo_image").change ->		
-		$('img#upload-photo').attr('src', window.URL.createObjectURL(this.files[0]))
+		$('img#photo-upload').attr('src', window.URL.createObjectURL(this.files[0]))
 	$("img.main-img").click ->
 		window.location=$(this).attr("link")
 	$(window).on 'scroll', ->
