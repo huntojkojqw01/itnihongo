@@ -14,7 +14,7 @@
     <% @photos.each do |photo| %>
         <li class="col-sm-4">
           <div class="image-box">
-            <img src="<%= photo.image %>" alt="Click here" class="main-img" link="<%=photo_path(photo)%>">
+            <img src="<%= photo.image %>" alt="Click here" class="main-img" link="<%=photo_path(photo)%>" onclick="window.location='<%=photo_path(photo)%>'">
             <div class="image-info">
               <div class="like-box self-hover">
                 <i class="fa fa-heart" aria-hidden="true"></i>

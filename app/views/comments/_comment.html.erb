@@ -4,7 +4,7 @@
     <b><%= link_to comment.user_last_name, comment.user, class: "username"%></b>
     <span class="time_ago"><%= time_ago_in_words(comment.created_at) %></span>
     <% if current_user==comment.user then%>
-    <div class="dropdown">
+    <div class="dropdown right-align">
       <i class="fa fa-ellipsis-h dropdown-toggle" data-toggle="dropdown" aria-hidden="true"></i>
       <ul class="dropdown-menu menu-post-actions" role="menu">
         <li>

@@ -53,7 +53,10 @@
         <div class="col-sm-3 col-md-3 col-lg-3 center-align">
           <label ><%=cl_image_tag @pet.avatar,size: "200x200", class: "pet-avatar" if @pet.avatar%></label>
           <h2><%=@pet.name%></h2>
-          <%= t('common.follows_text')+': '+@pet.follow_numbers.to_s%>
+          <%= t('common.follows_text')+': '%>
+          <span id="follow_numbers">
+            <%=@pet.follow_numbers%>                
+          </span>
         </div>
         <div class="col-sm-6 col-md-6 col-lg-6">
           <div class="row col-sm-12 col-md-12 col-lg-12">
