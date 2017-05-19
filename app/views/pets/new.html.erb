@@ -1,51 +1,59 @@
-<%=t('newpet.title')%>
-<%= form_for @pet do |f| %>	
+<div class="container">
   <div class="row">
-    <div class="col-sm-4 col-md-4 col-lg-4">
-      <div class="field">    
-        <%= f.hidden_field :user_id,value: current_user.id %>
-      </div>
-      <div class="field">
-        <%= f.label t('newpet.avatar') %>    
-        <%= cl_image_tag(default_image, size: "250x250")%>
-        <label for="pet_avatar" class="btn btn-default"><%=t('newpet.select')%></label>
-        <%= f.file_field :avatar,style: "visibility:hidden"%>                
-      </div>
+    <div class="col-sm-4 col-md-4 col-lg-4 center-align">
+      <h2><%=t('newpet.title')%></h2>
     </div>
-    <div class="col-sm-4 col-md-6 col-lg-6">
-      <div class="field">
-        <%= f.label t('newpet.name') %><br />
-        <%= f.text_field :name, autocomplete: "off" %>
-      </div>
+  </div>
+  <%= form_for @pet do |f| %>
+      <div class="row">
+        <div class="col-sm-4 col-md-4 col-lg-4">
+          <div class="field">
+            <%= f.hidden_field :user_id,value: current_user.id %>
+          </div>
+          <div class="field center-align">
+            <%= cl_image_tag(default_image, size: "250x250")%><br><br>
+            <label for="pet_avatar" class="btn btn-default"><%=t('newpet.select')%></label>
+            <%= f.file_field :avatar,style: "visibility:hidden"%>
+          </div>
+        </div>
+        <div class="col-sm-8 col-md-8 col-lg-8">
+          <div class="field row form-group">
+            <div class="col-sm-3 col-md-3 col-lg-3"><%= f.label t('newpet.name') %></div>
+            <div class="col-sm-6 col-md-6 col-lg-6"><%= f.text_field :name, autocomplete: "off", class: "form-control" %></div>
+          </div>
 
-      <div class="field">
-        <%= f.label t('newpet.kind') %><br />
-        <%= f.collection_select :kind_id,Kind.all,:id,:name %>
-      </div>
-      
-      <div class="field">
-        <%= f.label t('newpet.gender') %><br />
-        <%=t('newpet.male')%><%= f.radio_button :gender,1,checked: true %>
-        <%=t('newpet.female')%><%= f.radio_button :gender,0 %>
-      </div>
-      
-      <div class="field">
-        <%= f.label t('newpet.birthday') %><br />
-        <%= f.date_select :birthday, start_year: 1917, end_year: 2017 %>
-      </div>
-      
-      <div class="field">
-        <%= f.label t('newpet.weight') %><br />
-        <%= f.number_field :weight%>
-      </div>
+          <div class="field row form-group">
+            <div class="col-sm-3 col-md-3 col-lg-3"><%= f.label t('newpet.kind') %></div>
+            <div class="col-sm-6 col-md-6 col-lg-6"><%= f.collection_select :kind_id,Kind.all,:id,:name,{}, {class: "form-control"} %></div>
+          </div>
 
-      <div class="field">
-        <%= f.label t('newpet.description') %><br />
-        <%= f.text_area :description%>
+          <div class="field row form-group">
+            <div class="col-sm-3 col-md-3 col-lg-3"><%= f.label t('newpet.gender') %></div>
+            <div class="col-sm-6 col-md-6 col-lg-6">
+              <%=t('newpet.male')%><%= f.radio_button :gender,1,checked: true %>
+              <%=t('newpet.female')%><%= f.radio_button :gender,0 %>
+            </div>
+          </div>
+
+          <div class="field row form-group">
+            <div class="col-sm-3 col-md-3 col-lg-3"><%= f.label t('newpet.birthday') %></div>
+            <div class="col-sm-6 col-md-6 col-lg-6"><%= f.date_select :birthday, {start_year: 1917, end_year: 2017}, {class: "form-control date-select"} %></div>
+          </div>
+
+          <div class="field row form-group">
+            <div class="col-sm-3 col-md-3 col-lg-3"> <%= f.label t('newpet.weight') %></div>
+            <div class="col-sm-6 col-md-6 col-lg-6"><%= f.number_field :weight, class:"form-control"%></div>
+          </div>
+
+          <div class="field row form-group">
+            <div class="col-sm-3 col-md-3 col-lg-3"><%= f.label t('newpet.description') %></div>
+            <div class="col-sm-6 col-md-6 col-lg-6"><%= f.text_area :description, class:"form-control"%></div>
+          </div>
+          <div class="actions row form-group">
+            <div class="col-sm-3 col-md-3 col-lg-3"></div>
+            <div class="col-sm-6 col-md-6 col-lg-6"><%= f.submit t('newpet.submit'), class: "btn btn-default" %></div>
+          </div>
+        </div>
       </div>
-      <div class="actions">
-        <%= f.submit t('newpet.submit') %>
-      </div>
-    </div>
-  </div>  
-<% end %>
+  <% end %>
+</div>

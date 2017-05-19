@@ -9,7 +9,7 @@
         <%= form_for(Album.new, remote: true) do |f|%>
           <div id="errors"></div>
           <div class="form-group">
-            <%= label_tag t('newphoto.petname')%>
+            <%= label_tag t('newphoto.petname'), nil, class: "display-block"%>
             <% pet||=nil%>
             <% if pet %>
               <input type="text" name="petname" value="<%=pet.name%>" readonly><br>
@@ -19,7 +19,7 @@
             <% end %>
           </div>
           <div class="form-group">
-            <%= label_tag t('newphoto.albumname')%>
+            <%= label_tag t('newphoto.albumname'), nil, class: "display-block"%>
             <%= f.text_field :name%>
           </div>
           <div class="form-group">
